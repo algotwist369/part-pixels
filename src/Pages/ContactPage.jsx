@@ -1,4 +1,4 @@
-import { FiUploadCloud, FiMail, FiClock } from "react-icons/fi";
+import { FiUploadCloud } from "react-icons/fi";
 import SendButton from "../components/buttons/SendButton";
 
 const inquiryCategories = [
@@ -47,19 +47,6 @@ const inputFields = [
     },
 ];
 
-const assistanceInfo = [
-    {
-        icon: FiMail,
-        label: "Email",
-        value: "support@partpixels.com",
-        href: "mailto:support@partpixels.com",
-    },
-    {
-        icon: FiClock,
-        label: "Business Hours",
-        value: "Monday – Saturday | 9:30 AM – 6:30 PM IST",
-    },
-];
 
 const inputClass =
     "h-14 w-full rounded-xl border border-white/10 bg-black/50 px-5 text-sm text-white outline-none transition placeholder:text-white/30 focus:border-[#d6a000]/70";

@@ -6,6 +6,8 @@ import WarrantyPage from './Pages/WarrantyPage'
 import AboutCompanyPage from './Pages/AboutCompanyPage'
 import ContactPage from './Pages/ContactPage'
 import MainHomePage from './Pages/MainHomePage'
+import ProductDetailPage from './Pages/ProductDetailPage'
+import FAQs from './Pages/FAQs'
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
         <Route path="/warranty" element={<WarrantyPage />} />
         <Route path="/about-company" element={<AboutCompanyPage />} />
         <Route path="/contact-us" element={<ContactPage />} />
+        <Route path="/products/:slug" element={<ProductDetailPage />} />
+        <Route path="/faqs" element={<FAQs />} />
       </Routes>
       <Footer />
     </div>
@@ -24,3 +28,4 @@ const App = () => {
 }
 
 export default App
+

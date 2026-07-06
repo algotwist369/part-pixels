@@ -1,9 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import {
-    FiMail,
-    FiClock,
-    FiArrowUpRight,
     FiShield,
     FiCpu,
     FiHardDrive,

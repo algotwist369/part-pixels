@@ -18,8 +18,9 @@ const navLinks = [
         to: "#products",
         hasDropdown: true,
         dropdownItems: [
-            { label: "PIXPRO FLEX - M.2 2280", to: "/pixpro-flex" },
-            { label: "PIXPRO EDGE - TLC M.2 2280", to: "/pixpro-edge" },
+            { label: "PIXPRO CORE - TLC SATA 2.5", to: "/products/pixpro-core" },
+            { label: "PIXPRO EDGE - TLC M.2 2280", to: "/products/pixpro-edge" },
+            { label: "PIXPRO FLEX - M.2 2280", to: "/products/pixpro-flex" },
         ],
     },
     {
@@ -390,3 +391,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

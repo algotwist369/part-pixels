@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { FiDownload } from "react-icons/fi";
 
 const warrantyParagraphs = [
@@ -52,6 +53,9 @@ const notCovered = [
 ];
 
 const WarrantyPage = () => {
+    useEffect(() => {
+            window.scrollTo(0, 0);
+        }, []);
     return (
         <main className="min-h-screen bg-black px-5 pt-36 pb-24 text-white">
             <section className="mx-auto max-w-4xl">
