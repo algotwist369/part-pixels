@@ -10,7 +10,7 @@ const heroSlides = [
         description:
             "High-speed portable SSD storage designed for creators, gamers, professionals, and everyday performance.",
         buttonText: "Learn More",
-        image: "/heroimage1.jpeg",
+        image: "/heroimage (1).jpeg",
     },
     {
         id: 2,
@@ -19,10 +19,31 @@ const heroSlides = [
         description:
             "Experience next-generation storage performance with fast transfer speed and reliable durability.",
         buttonText: "Explore Product",
-        image: "/heroimage2.jpeg",
+        image: "/heroimage (2).jpeg",
+
+    },
+      {
+        id: 3,
+        label: "Platinum P41 SSD",
+        title: "Built for Speed, Power and Precision",
+        description:
+            "Experience next-generation storage performance with fast transfer speed and reliable durability.",
+        buttonText: "Explore Product",
+        image: "/heroimage (3).jpeg",
+
+    },
+      {
+        id: 4,
+        label: "Platinum P41 SSD",
+        title: "Built for Speed, Power and Precision",
+        description:
+            "Experience next-generation storage performance with fast transfer speed and reliable durability.",
+        buttonText: "Explore Product",
+        image: "/heroimage (4).jpeg",
+
     },
     {
-        id: 3,
+        id: 5,
         label: "Gold P31 SSD",
         title: "Performance That Moves With You",
         description:
@@ -139,7 +160,7 @@ const HomePage = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             nextSlide();
-        }, 6000);
+        }, 7000);
 
         return () => clearInterval(interval);
     }, []);

@@ -249,14 +249,14 @@ const AboutCompanyPage = () => {
                 <div className="absolute inset-0">
                     <img
                         ref={imageRef}
-                        src="/about.jpeg"
+                        src="heroimage (3).jpeg"
                         alt="PartPixels company background"
                         className="h-full w-full object-cover opacity-30"
                     />
 
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.55)_45%,rgba(0,0,0,0.95)_100%)]" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/35 to-black/85" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black via-black/10 to-black" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/35 to-black/40" />
                 </div>
 
                 <div
