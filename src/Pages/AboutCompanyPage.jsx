@@ -249,8 +249,10 @@ const AboutCompanyPage = () => {
                 <div className="absolute inset-0">
                     <img
                         ref={imageRef}
-                        src="heroimage (3).jpeg"
+                        src="/hero-3.jpg"
                         alt="PartPixels company background"
+                        decoding="async"
+                        fetchPriority="high"
                         className="h-full w-full object-cover opacity-30"
                     />
 

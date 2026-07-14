@@ -1,55 +1,32 @@
 import { useEffect, useRef, useState } from "react";
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
 
 const heroSlides = [
     {
         id: 1,
-        label: "Beetle X31 SSD",
-        title: "Expansive Storage at Your Fingertips",
-        description:
-            "High-speed portable SSD storage designed for creators, gamers, professionals, and everyday performance.",
-        buttonText: "Learn More",
-        image: "/heroimage (1).jpeg",
+        label: "PIXPRO CORE · TLC SATA 2.5",
+        title: "Reliable Performance for Every Day",
+        description: "A responsive SATA SSD upgrade with up to 560 MB/s read speed, broad compatibility, and dependable daily performance.",
+        buttonText: "Explore PIXPRO CORE",
+        image: "/hero-1.jpg",
     },
     {
         id: 2,
-        label: "Platinum P41 SSD",
-        title: "Built for Speed, Power and Precision",
-        description:
-            "Experience next-generation storage performance with fast transfer speed and reliable durability.",
-        buttonText: "Explore Product",
-        image: "/heroimage (2).jpeg",
-
-    },
-      {
-        id: 3,
-        label: "Platinum P41 SSD",
-        title: "Built for Speed, Power and Precision",
-        description:
-            "Experience next-generation storage performance with fast transfer speed and reliable durability.",
-        buttonText: "Explore Product",
-        image: "/heroimage (3).jpeg",
-
-    },
-      {
-        id: 4,
-        label: "Platinum P41 SSD",
-        title: "Built for Speed, Power and Precision",
-        description:
-            "Experience next-generation storage performance with fast transfer speed and reliable durability.",
-        buttonText: "Explore Product",
-        image: "/heroimage (4).jpeg",
-
+        label: "PIXPRO EDGE · TLC M.2 2280",
+        title: "High-Speed Performance Without Compromise",
+        description: "PCIe Gen3 x4 NVMe speed for gamers, creators, professionals, and modern productivity workflows.",
+        buttonText: "Explore PIXPRO EDGE",
+        image: "/hero-2.jpg",
     },
     {
-        id: 5,
-        label: "Gold P31 SSD",
-        title: "Performance That Moves With You",
-        description:
-            "Compact, powerful and efficient SSD storage for smooth workflows and premium computing experience.",
-        buttonText: "View Details",
-        image: "/heroimage3.jpeg",
+        id: 3,
+        label: "PIXPRO FLEX · M.2 2280",
+        title: "High Capacity. Lasting Performance.",
+        description: "Up to 3,500 MB/s read speed, premium 128-layer TLC NAND, and capacities up to 2TB for demanding users.",
+        buttonText: "Explore PIXPRO FLEX",
+        image: "/hero-3.jpg",
     },
 ];
 
@@ -158,11 +135,18 @@ const HomePage = () => {
     }, [activeSlide]);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            nextSlide();
-        }, 7000);
-
-        return () => clearInterval(interval);
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+        let interval;
+        const updateAutoplay = () => {
+            window.clearInterval(interval);
+            if (!document.hidden) interval = window.setInterval(nextSlide, 7000);
+        };
+        document.addEventListener("visibilitychange", updateAutoplay);
+        updateAutoplay();
+        return () => {
+            document.removeEventListener("visibilitychange", updateAutoplay);
+            window.clearInterval(interval);
+        };
     }, []);
 
     return (
@@ -177,6 +161,8 @@ const HomePage = () => {
                     key={currentSlide.id}
                     src={currentSlide.image}
                     alt={currentSlide.title}
+                    decoding="async"
+                    fetchPriority={activeSlide === 0 ? "high" : "auto"}
                     className="h-full w-full object-cover"
                 />
 
@@ -212,8 +198,8 @@ const HomePage = () => {
                         </p>
 
                         <div ref={buttonRef} className="mt-9 flex justify-center">
-                            <a
-                                href="#products"
+                            <Link
+                                to="/#products"
                                 className="
                   group relative inline-flex items-center justify-center
                   overflow-hidden rounded-full border border-white/70
@@ -224,7 +210,7 @@ const HomePage = () => {
                             >
                                 {currentSlide.buttonText}
                                 <span className="absolute inset-0 -left-full bg-white/20 transition-all duration-700 group-hover:left-full" />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

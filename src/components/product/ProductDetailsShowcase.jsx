@@ -2,31 +2,14 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const products = [
-  {
-    name: "Gold P31 SSD",
-    eyebrow: "Everyday NVMe power",
-    image: "/4.png",
-    metric: "3,500 MB/s",
-    copy: "A fast, efficient internal SSD tuned for smooth builds, creative work, and daily high-speed storage.",
-  },
-  {
-    name: "Platinum P41 SSD",
-    eyebrow: "Flagship performance",
-    image: "/5.png",
-    metric: "7,000 MB/s",
-    copy: "A premium PCIe drive with sharp thermals, high throughput, and serious performance headroom.",
-  },
-  {
-    name: "Beetle X31 SSD",
-    eyebrow: "Portable metal drive",
-    image: "/6.png",
-    metric: "1,050 MB/s",
-    copy: "A compact external SSD with a polished finish, pocketable form, and transfer speed built for motion.",
-  },
+  { name: "PIXPRO CORE", eyebrow: "Reliable everyday performance", image: "/pixpro-product.jpg", metric: "560 MB/s", copy: "A dependable TLC SATA upgrade engineered for faster boot times, responsive applications, silent operation, and broad system compatibility.", href: "/products/pixpro-core" },
+  { name: "PIXPRO EDGE", eyebrow: "Performance for gamers and professionals", image: "/pixpro-product.jpg", metric: "3,500 MB/s", copy: "PCIe Gen3 x4 NVMe speed, premium 3D NAND, and intelligent thermal management for demanding modern workloads.", href: "/products/pixpro-edge" },
+  { name: "PIXPRO FLEX", eyebrow: "Value-focused high-capacity storage", image: "/pixpro-product.jpg", metric: "Up to 2TB", copy: "Premium 128-layer 3D TLC NAND with up to 3,200 MB/s write performance, advanced data protection, and lasting endurance.", href: "/products/pixpro-flex" },
 ];
 
 const pathPoints = [
@@ -96,16 +79,18 @@ const ProductDetailsShowcase = () => {
     const canvas = canvasRef.current;
     if (!section || !canvas) return undefined;
 
+    let cleanup = () => {};
     const ctx = gsap.context(() => {
       const width = window.innerWidth;
       const height = window.innerHeight;
+      const lowPower = width < 768 || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       const renderer = new THREE.WebGLRenderer({
         canvas,
-        antialias: true,
+        antialias: !lowPower,
         alpha: true,
       });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, lowPower ? 1 : 1.4));
       renderer.setSize(width, height);
       renderer.outputColorSpace = THREE.SRGBColorSpace;
 
@@ -123,7 +108,7 @@ const ProductDetailsShowcase = () => {
       path.tension = 0.5;
 
       const tunnelTexture = createTunnelTexture();
-      const tunnelGeometry = new THREE.TubeGeometry(path, 420, 5.2, 48, false);
+      const tunnelGeometry = new THREE.TubeGeometry(path, lowPower ? 140 : 240, 5.2, lowPower ? 20 : 32, false);
       const tunnelMaterial = new THREE.MeshStandardMaterial({
         side: THREE.BackSide,
         map: tunnelTexture,
@@ -134,7 +119,8 @@ const ProductDetailsShowcase = () => {
       const tunnel = new THREE.Mesh(tunnelGeometry, tunnelMaterial);
       scene.add(tunnel);
 
-      const wireGeometry = new THREE.EdgesGeometry(new THREE.TubeGeometry(path, 220, 4.55, 28, false));
+      const wireTubeGeometry = new THREE.TubeGeometry(path, lowPower ? 90 : 150, 4.55, lowPower ? 12 : 20, false);
+      const wireGeometry = new THREE.EdgesGeometry(wireTubeGeometry);
       const wireMaterial = new THREE.LineBasicMaterial({
         color: 0xd6a000,
         transparent: true,
@@ -143,7 +129,7 @@ const ProductDetailsShowcase = () => {
       const wireframe = new THREE.LineSegments(wireGeometry, wireMaterial);
       scene.add(wireframe);
 
-      const particleCount = 1600;
+      const particleCount = lowPower ? 350 : 800;
       const particlePositions = new Float32Array(particleCount * 3);
       for (let i = 0; i < particleCount; i += 1) {
         particlePositions[i * 3] = Math.random() * 280 - 40;
@@ -171,6 +157,11 @@ const ProductDetailsShowcase = () => {
       const cameraState = { progress: 0, mouseX: Math.PI, mouseY: 0 };
       const scrollState = { progress: 0 };
       let animationFrame = 0;
+      let isActive = true;
+      const visibilityObserver = new IntersectionObserver(([entry]) => {
+        isActive = entry.isIntersecting && !document.hidden;
+      }, { rootMargin: "200px 0px" });
+      visibilityObserver.observe(section);
 
       const updateCamera = () => {
         const progress = THREE.MathUtils.clamp(cameraState.progress, 0, 0.965);
@@ -184,13 +175,15 @@ const ProductDetailsShowcase = () => {
       };
 
       const render = () => {
-        cameraState.progress += (scrollState.progress - cameraState.progress) * 0.12;
-        tunnelTexture.offset.x -= 0.0015;
-        tunnelTexture.offset.y += 0.00025;
-        particles.rotation.y += 0.0007;
-        particles.rotation.x += 0.00025;
-        updateCamera();
-        renderer.render(scene, camera);
+        if (isActive) {
+          cameraState.progress += (scrollState.progress - cameraState.progress) * 0.12;
+          tunnelTexture.offset.x -= 0.0015;
+          tunnelTexture.offset.y += 0.00025;
+          particles.rotation.y += 0.0007;
+          particles.rotation.x += 0.00025;
+          updateCamera();
+          renderer.render(scene, camera);
+        }
         animationFrame = requestAnimationFrame(render);
       };
 
@@ -275,7 +268,8 @@ const ProductDetailsShowcase = () => {
       window.addEventListener("resize", onResize);
       render();
 
-      return () => {
+      cleanup = () => {
+        visibilityObserver.disconnect();
         window.removeEventListener("mousemove", onPointerMove);
         window.removeEventListener("resize", onResize);
         cancelAnimationFrame(animationFrame);
@@ -284,6 +278,7 @@ const ProductDetailsShowcase = () => {
         tunnelGeometry.dispose();
         tunnelMaterial.dispose();
         tunnelTexture.dispose();
+        wireTubeGeometry.dispose();
         wireGeometry.dispose();
         wireMaterial.dispose();
         particleGeometry.dispose();
@@ -292,18 +287,21 @@ const ProductDetailsShowcase = () => {
       };
     }, section);
 
-    return () => ctx.revert();
+    return () => {
+      cleanup();
+      ctx.revert();
+    };
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      id="beetle-x31-ssd"
-      className="relative h-[1000vh] overflow-visible bg-black text-white"
+      id="product-experience"
+      className="relative h-[650vh] overflow-visible bg-black text-white"
     >
       <div className="sticky top-0 h-screen overflow-hidden">
         <canvas ref={canvasRef} className="experience absolute inset-0 z-10 h-full w-full" />
-        <div className="scrollTarget pointer-events-none absolute left-0 top-0 z-0 h-[1000vh] w-24" />
+        <div className="scrollTarget pointer-events-none absolute left-0 top-0 z-0 h-[650vh] w-24" />
         <div className="vignette-radial pointer-events-none absolute inset-0 z-30 after:absolute after:inset-0 after:bg-[radial-gradient(circle,transparent_48%,rgba(0,0,0,0.92)_145%)] after:content-['']" />
         <div className="pointer-events-none absolute left-0 right-0 top-0 z-30 h-40 bg-gradient-to-b from-black via-black/78 to-transparent" />
         <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-30 h-40 bg-gradient-to-t from-black via-black/78 to-transparent" />
@@ -328,6 +326,8 @@ const ProductDetailsShowcase = () => {
                 <img
                   src={product.image}
                   alt={product.name}
+                  loading="lazy"
+                  decoding="async"
                   className="relative z-10 max-h-[300px] w-full max-w-[22rem] object-contain drop-shadow-[0_30px_70px_rgba(0,0,0,0.9)] md:max-h-[430px] md:max-w-[25rem]"
                 />
               </div>
@@ -346,18 +346,18 @@ const ProductDetailsShowcase = () => {
                   {product.copy}
                 </p>
                 <div className="mt-8 flex gap-3">
-                  <a
-                    href="#products"
+                  <Link
+                    to={product.href}
                     className="border border-white/35 px-6 py-3 text-xs font-bold uppercase tracking-[0.24em] text-white/80 transition hover:border-[#d6a000] hover:text-[#d6a000]"
                   >
                     Explore
-                  </a>
-                  <a
-                    href="#products"
+                  </Link>
+                  <Link
+                    to={product.href}
                     className="bg-white px-6 py-3 text-xs font-bold uppercase tracking-[0.24em] text-black transition hover:bg-[#d6a000]"
                   >
                     Shop
-                  </a>
+                  </Link>
                 </div>
               </div>
             </article>

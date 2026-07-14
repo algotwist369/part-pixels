@@ -1,198 +1,369 @@
 [
-  {
-    "slug": "pixpro-core",
-    "name": "PIXPRO CORE",
-    "fullName": "PartPixels PIXPRO SATA SSD",
-    "badge": "TLC SATA 2.5",
-    "headline": "Reliable everyday performance",
-    "summary": "The PIXPRO SATA SSD is designed to deliver a practical balance of speed, reliability, and efficiency for everyday computing. It is ideal for upgrading older laptops or building dependable desktop systems.",
-    "image": "/6.png",
-    "metrics": [
-      { "label": "Sequential Read", "value": "Up to 560 MB/s" },
-      { "label": "Interface", "value": "SATA III 6 Gb/s" },
-      { "label": "Form Factor", "value": "2.5-inch SATA" },
-      { "label": "Use Case", "value": "Laptop and desktop upgrades" }
-    ],
-    "sections": [
-      {
-        "title": "Engineered for Everyday Excellence",
-        "body": "The PIXPRO SATA SSD provides faster boot times, smoother application performance, and a more responsive computing experience. Built with premium components, it is engineered to keep up with daily demands."
-      },
-      {
-        "title": "Faster Performance, Better Productivity",
-        "body": "With sequential read speeds of up to 560 MB/s, PIXPRO CORE offers a noticeable improvement over traditional hard drives for startup, application loading, file transfers, and multitasking."
-      },
-      {
-        "title": "Built for Reliability",
-        "body": "Every PIXPRO SATA SSD is manufactured using high-quality 3D NAND Flash and advanced controller technology, then subjected to quality and reliability testing for stable long-term operation."
-      },
-      {
-        "title": "Efficient, Silent, and Durable",
-        "body": "With no moving parts, the drive operates silently while consuming less power and generating less heat than conventional hard drives. Its shock-resistant design supports reliable everyday use."
-      },
-      {
-        "title": "Compatible with Your System",
-        "body": "Designed with a standard 2.5-inch SATA III interface, PIXPRO CORE offers broad compatibility with most desktops and laptops for simple storage upgrades."
-      }
-    ],
-    "features": [
-      "High-quality 3D NAND Flash",
-      "Advanced controller technology",
-      "Silent operation with no moving parts",
-      "Low power consumption",
-      "Shock-resistant storage design",
-      "Broad laptop and desktop compatibility",
-      "Comprehensive functional and performance testing"
-    ],
-    "imageChecklist": [
-      "Front View",
-      "Rear View",
-      "2.5-inch SATA Connector",
-      "Internal PCB and NAND Layout",
-      "Retail Packaging",
-      "Installed in Laptop",
-      "Installed in Desktop"
-    ]
-  },
-  {
-    "slug": "pixpro-edge",
-    "name": "PIXPRO EDGE",
-    "fullName": "PartPixels PIXPRO Gen3 NVMe SSD",
-    "badge": "TLC M.2 2280",
-    "headline": "High-speed performance for gamers and professionals",
-    "summary": "Built on the PCIe Gen3 x4 interface, PIXPRO EDGE delivers responsive NVMe performance for everyday users, professionals, creators, and gamers.",
-    "image": "/4.png",
-    "metrics": [
-      { "label": "Sequential Read", "value": "Up to 3,500 MB/s" },
-      { "label": "Sequential Write", "value": "Up to 3,000 MB/s" },
-      { "label": "Interface", "value": "PCIe Gen3 x4" },
-      { "label": "Form Factor", "value": "M.2 2280" }
-    ],
-    "sections": [
-      {
-        "title": "Unleash Everyday Performance",
-        "body": "PIXPRO EDGE helps users boot systems, launch applications, and transfer large files faster. It is designed for everyday computing, creative workloads, gaming, and professional use."
-      },
-      {
-        "title": "High-Speed Performance",
-        "body": "Sequential read speeds of up to 3,500 MB/s and write speeds of up to 3,000 MB/s deliver a strong upgrade from traditional SATA SSDs."
-      },
-      {
-        "title": "Built for Reliability",
-        "body": "Premium 3D NAND Flash, an advanced controller, and intelligent firmware work together to deliver stable and consistent performance."
-      },
-      {
-        "title": "Optimized Power Efficiency",
-        "body": "PIXPRO EDGE balances speed with low power consumption. Efficient thermal management helps maintain stable operation during extended workloads."
-      },
-      {
-        "title": "Designed for Every Workload",
-        "body": "Its compact M.2 2280 form factor makes it suitable for desktops, laptops, workstations, gaming systems, and professional environments."
-      },
-      {
-        "title": "Quality You Can Trust",
-        "body": "Every PIXPRO SSD is tested for performance, compatibility, and reliability before reaching customers."
-      }
-    ],
-    "features": [
-      "PCIe Gen3 x4 NVMe performance",
-      "Sequential read speeds up to 3,500 MB/s",
-      "Sequential write speeds up to 3,000 MB/s",
-      "Premium 3D NAND Flash",
-      "Advanced controller and intelligent firmware",
-      "Efficient thermal management",
-      "Compact M.2 2280 form factor",
-      "Performance, compatibility, and reliability tested"
-    ],
-    "imageChecklist": [
-      "Front View",
-      "Rear View",
-      "M.2 2280 PCB Design",
-      "Controller and NAND Components",
-      "Installed in Desktop Motherboard",
-      "Installed in Laptop",
-      "Retail Packaging"
-    ]
-  },
-  {
-    "slug": "pixpro-flex",
-    "name": "PIXPRO FLEX",
-    "fullName": "PIXPRO Gen3 NVMe SSD",
-    "badge": "M.2 2280",
-    "headline": "Value-focused, high-capacity storage",
-    "summary": "PIXPRO FLEX is designed for users who demand speed, reliability, and efficiency for gaming, content creation, professional workloads, and everyday computing.",
-    "image": "/5.png",
-    "metrics": [
-      { "label": "Sequential Read", "value": "Up to 3,500 MB/s" },
-      { "label": "Sequential Write", "value": "Up to 3,200 MB/s" },
-      { "label": "Capacities", "value": "500GB, 1TB, 2TB" },
-      { "label": "NAND Flash", "value": "128-Layer 3D TLC" }
-    ],
-    "sections": [
-      {
-        "title": "Power Your Everyday Performance",
-        "body": "Built on the PCIe Gen3 x4 interface, PIXPRO FLEX delivers the balance of high-speed storage and dependable durability needed for modern PCs."
-      },
-      {
-        "title": "Blazing-Fast PCIe Gen3 Performance",
-        "body": "Sequential read speeds of up to 3,500 MB/s and write speeds of up to 3,200 MB/s help reduce waiting time across booting, app launches, editing, and data transfers."
-      },
-      {
-        "title": "Premium 3D TLC NAND Technology",
-        "body": "High-quality 3D TLC NAND Flash, an advanced NVMe controller, and intelligent firmware optimization help ensure stable performance during intensive workloads."
-      },
-      {
-        "title": "Intelligent Performance and Power Efficiency",
-        "body": "The drive is engineered to maximize performance while minimizing power consumption. Intelligent thermal management helps maintain consistent operating temperatures."
-      },
-      {
-        "title": "Designed for Reliability",
-        "body": "Every PIXPRO SSD undergoes comprehensive quality inspections and performance validation before leaving production."
-      },
-      {
-        "title": "Built for Every User",
-        "body": "The M.2 2280 form factor makes PIXPRO FLEX suitable for desktops, laptops, gaming systems, workstations, and business applications."
-      }
-    ],
-    "features": [
-      "PCIe Gen3 x4 NVMe Interface",
-      "M.2 2280 Single-Sided Design",
-      "Premium 128-Layer 3D TLC NAND Flash",
-      "Sequential read speeds up to 3,500 MB/s",
-      "Sequential write speeds up to 3,200 MB/s",
-      "Up to 570K/600K IOPS random read/write performance",
-      "AES 256-bit hardware encryption",
-      "TRIM, S.M.A.R.T, and Garbage Collection support",
-      "Low power consumption with intelligent thermal management"
-    ],
-    "specifications": [
-      { "label": "Form Factor", "value": "M.2 2280 Single-Sided" },
-      { "label": "Interface", "value": "PCIe Gen3 x4, NVMe 1.4" },
-      { "label": "Available Capacities", "value": "500GB, 1TB, 2TB" },
-      { "label": "NAND Flash", "value": "Premium 128-Layer 3D TLC NAND Flash" },
-      { "label": "Sequential Read Speed", "value": "Up to 3,500 MB/s" },
-      { "label": "Sequential Write Speed", "value": "Up to 3,200 MB/s (2TB and 1TB), up to 3,100 MB/s (500GB)" },
-      { "label": "Random Read Performance", "value": "Up to 570,000 IOPS" },
-      { "label": "Random Write Performance", "value": "Up to 600,000 IOPS" },
-      { "label": "TRIM Support", "value": "Supported" },
-      { "label": "S.M.A.R.T Monitoring", "value": "Supported" },
-      { "label": "Garbage Collection", "value": "Supported" },
-      { "label": "Hardware Encryption", "value": "AES 256-bit Encryption, Pyrite 2.0" },
-      { "label": "Device Sleep", "value": "Supported" },
-      { "label": "Read / Write Latency", "value": "Read: 90 us, Write: 45 us" },
-      { "label": "Queue Support", "value": "Up to 256 Queues, up to 1,024 Queue Depth per Queue" },
-      { "label": "Operating Temperature", "value": "0C to 70C" },
-      { "label": "Temperature Monitoring", "value": "Integrated Temperature Sensor (SMART)" },
-      { "label": "MTBF", "value": "Up to 1.5 Million Hours" },
-      { "label": "Bit Error Rate", "value": "1 Error per 10^15 Bits Transferred" },
-      { "label": "Dimensions", "value": "22.0 x 80.0 x 2.23 mm (Max.)" },
-      { "label": "Weight", "value": "Up to 7.0 g" },
-      { "label": "Operating Voltage", "value": "3.3V +/- 5%" }
-    ],
-    "capacities": [
-      { "capacity": "500GB", "read": "Up to 3,500 MB/s", "write": "Up to 3,100 MB/s", "randomRead": "Up to 570K IOPS", "randomWrite": "Up to 600K IOPS" },
-      { "capacity": "1TB", "read": "Up to 3,500 MB/s", "write": "Up to 3,200 MB/s", "randomRead": "Up to 570K IOPS", "randomWrite": "Up to 600K IOPS" },
-      { "capacity": "2TB", "read": "Up to 3,500 MB/s", "write": "Up to 3,200 MB/s", "randomRead": "Up to 570K IOPS", "randomWrite": "Up to 600K IOPS" }
-    ]
-  }
+    {
+        "slug":  "pixpro-core",
+        "name":  "PIXPRO CORE",
+        "fullName":  "PartPixels PIXPRO SATA SSD",
+        "badge":  "TLC SATA 2.5",
+        "headline":  "Reliable everyday performance",
+        "summary":  "The PIXPRO SATA SSD is designed to deliver a practical balance of speed, reliability, and efficiency for everyday computing. It is ideal for upgrading older laptops or building dependable desktop systems.",
+        "image":  "/pixpro-product.jpg",
+        "metrics":  [
+                        {
+                            "label":  "Sequential Read",
+                            "value":  "Up to 560 MB/s"
+                        },
+                        {
+                            "label":  "Interface",
+                            "value":  "SATA III 6 Gb/s"
+                        },
+                        {
+                            "label":  "Form Factor",
+                            "value":  "2.5-inch SATA"
+                        },
+                        {
+                            "label":  "Use Case",
+                            "value":  "Laptop and desktop upgrades"
+                        }
+                    ],
+        "sections":  [
+                         {
+                             "title":  "Engineered for Everyday Excellence",
+                             "body":  "The PIXPRO SATA SSD provides faster boot times, smoother application performance, and a more responsive computing experience. Built with premium components, it is engineered to keep up with daily demands."
+                         },
+                         {
+                             "title":  "Faster Performance, Better Productivity",
+                             "body":  "With sequential read speeds of up to 560 MB/s, PIXPRO CORE offers a noticeable improvement over traditional hard drives for startup, application loading, file transfers, and multitasking."
+                         },
+                         {
+                             "title":  "Built for Reliability",
+                             "body":  "Every PIXPRO SATA SSD is manufactured using high-quality 3D NAND Flash and advanced controller technology, then subjected to quality and reliability testing for stable long-term operation."
+                         },
+                         {
+                             "title":  "Efficient, Silent, and Durable",
+                             "body":  "With no moving parts, the drive operates silently while consuming less power and generating less heat than conventional hard drives. Its shock-resistant design supports reliable everyday use."
+                         },
+                         {
+                             "title":  "Compatible with Your System",
+                             "body":  "Designed with a standard 2.5-inch SATA III interface, PIXPRO CORE offers broad compatibility with most desktops and laptops for simple storage upgrades."
+                         },
+                         {
+                             "title":  "Quality You Can Trust",
+                             "body":  "Quality is at the core of every PartPixels product. Each PIXPRO CORE SSD undergoes comprehensive functional and performance testing before leaving the factory to verify speed, stability, compatibility, and reliability."
+                         }
+                     ],
+        "features":  [
+                         "High-quality 3D NAND Flash",
+                         "Advanced controller technology",
+                         "Silent operation with no moving parts",
+                         "Low power consumption",
+                         "Shock-resistant storage design",
+                         "Broad laptop and desktop compatibility",
+                         "Comprehensive functional and performance testing"
+                     ],
+        "imageChecklist":  [
+                               "Front View",
+                               "Rear View",
+                               "2.5-inch SATA Connector",
+                               "Internal PCB and NAND Layout",
+                               "Retail Packaging",
+                               "Installed in Laptop",
+                               "Installed in Desktop"
+                           ],
+        "whyChoose":  [
+                          "Up to 560 MB/s read performance",
+                          "Premium 3D NAND Flash",
+                          "Silent, shock-resistant operation",
+                          "Low power consumption",
+                          "Broad 2.5-inch SATA compatibility",
+                          "100% quality tested"
+                      ]
+    },
+    {
+        "slug":  "pixpro-edge",
+        "name":  "PIXPRO EDGE",
+        "fullName":  "PartPixels PIXPRO Gen3 NVMe SSD",
+        "badge":  "TLC M.2 2280",
+        "headline":  "High-speed performance for gamers and professionals",
+        "summary":  "Built on the PCIe Gen3 x4 interface, PIXPRO EDGE delivers responsive NVMe performance for everyday users, professionals, creators, and gamers.",
+        "image":  "/pixpro-product.jpg",
+        "metrics":  [
+                        {
+                            "label":  "Sequential Read",
+                            "value":  "Up to 3,500 MB/s"
+                        },
+                        {
+                            "label":  "Sequential Write",
+                            "value":  "Up to 3,000 MB/s"
+                        },
+                        {
+                            "label":  "Interface",
+                            "value":  "PCIe Gen3 x4"
+                        },
+                        {
+                            "label":  "Form Factor",
+                            "value":  "M.2 2280"
+                        }
+                    ],
+        "sections":  [
+                         {
+                             "title":  "Unleash Everyday Performance",
+                             "body":  "PIXPRO EDGE helps users boot systems, launch applications, and transfer large files faster. It is designed for everyday computing, creative workloads, gaming, and professional use."
+                         },
+                         {
+                             "title":  "High-Speed Performance",
+                             "body":  "Sequential read speeds of up to 3,500 MB/s and write speeds of up to 3,000 MB/s deliver a strong upgrade from traditional SATA SSDs."
+                         },
+                         {
+                             "title":  "Built for Reliability",
+                             "body":  "Premium 3D NAND Flash, an advanced controller, and intelligent firmware work together to deliver stable and consistent performance."
+                         },
+                         {
+                             "title":  "Optimized Power Efficiency",
+                             "body":  "PIXPRO EDGE balances speed with low power consumption. Efficient thermal management helps maintain stable operation during extended workloads."
+                         },
+                         {
+                             "title":  "Designed for Every Workload",
+                             "body":  "Its compact M.2 2280 form factor makes it suitable for desktops, laptops, workstations, gaming systems, and professional environments."
+                         },
+                         {
+                             "title":  "Quality You Can Trust",
+                             "body":  "Every PIXPRO SSD is tested for performance, compatibility, and reliability before reaching customers."
+                         },
+                         {
+                             "title":  "Built for the Future",
+                             "body":  "Modern NVMe technology, dependable Gen3 performance, and long-term reliability make PIXPRO EDGE a confident choice for upgrading an existing system or building a new one."
+                         }
+                     ],
+        "features":  [
+                         "PCIe Gen3 x4 NVMe performance",
+                         "Sequential read speeds up to 3,500 MB/s",
+                         "Sequential write speeds up to 3,000 MB/s",
+                         "Premium 3D NAND Flash",
+                         "Advanced controller and intelligent firmware",
+                         "Efficient thermal management",
+                         "Compact M.2 2280 form factor",
+                         "Performance, compatibility, and reliability tested"
+                     ],
+        "imageChecklist":  [
+                               "Front View",
+                               "Rear View",
+                               "M.2 2280 PCB Design",
+                               "Controller and NAND Components",
+                               "Installed in Desktop Motherboard",
+                               "Installed in Laptop",
+                               "Retail Packaging"
+                           ],
+        "whyChoose":  [
+                          "Up to 3,500 MB/s read speed",
+                          "Up to 3,000 MB/s write speed",
+                          "Premium 3D NAND Flash",
+                          "Intelligent thermal management",
+                          "Low power consumption",
+                          "100% performance and compatibility tested"
+                      ]
+    },
+    {
+        "slug":  "pixpro-flex",
+        "name":  "PIXPRO FLEX",
+        "fullName":  "PIXPRO Gen3 NVMe SSD",
+        "badge":  "M.2 2280",
+        "headline":  "Value-focused, high-capacity storage",
+        "summary":  "PIXPRO FLEX is designed for users who demand speed, reliability, and efficiency for gaming, content creation, professional workloads, and everyday computing.",
+        "image":  "/pixpro-product.jpg",
+        "metrics":  [
+                        {
+                            "label":  "Sequential Read",
+                            "value":  "Up to 3,500 MB/s"
+                        },
+                        {
+                            "label":  "Sequential Write",
+                            "value":  "Up to 3,200 MB/s"
+                        },
+                        {
+                            "label":  "Capacities",
+                            "value":  "500GB, 1TB, 2TB"
+                        },
+                        {
+                            "label":  "NAND Flash",
+                            "value":  "128-Layer 3D TLC"
+                        }
+                    ],
+        "sections":  [
+                         {
+                             "title":  "Power Your Everyday Performance",
+                             "body":  "Built on the PCIe Gen3 x4 interface, PIXPRO FLEX delivers the balance of high-speed storage and dependable durability needed for modern PCs."
+                         },
+                         {
+                             "title":  "Blazing-Fast PCIe Gen3 Performance",
+                             "body":  "Sequential read speeds of up to 3,500 MB/s and write speeds of up to 3,200 MB/s help reduce waiting time across booting, app launches, editing, and data transfers."
+                         },
+                         {
+                             "title":  "Premium 3D TLC NAND Technology",
+                             "body":  "High-quality 3D TLC NAND Flash, an advanced NVMe controller, and intelligent firmware optimization help ensure stable performance during intensive workloads."
+                         },
+                         {
+                             "title":  "Intelligent Performance and Power Efficiency",
+                             "body":  "The drive is engineered to maximize performance while minimizing power consumption. Intelligent thermal management helps maintain consistent operating temperatures."
+                         },
+                         {
+                             "title":  "Designed for Reliability",
+                             "body":  "Every PIXPRO SSD undergoes comprehensive quality inspections and performance validation before leaving production."
+                         },
+                         {
+                             "title":  "Built for Every User",
+                             "body":  "The M.2 2280 form factor makes PIXPRO FLEX suitable for desktops, laptops, gaming systems, workstations, and business applications."
+                         },
+                         {
+                             "title":  "Advanced Features",
+                             "body":  "TRIM, S.M.A.R.T. monitoring, Garbage Collection, AES 256-bit hardware encryption, Device Sleep support, intelligent thermal management, and a high-endurance design help protect performance over time."
+                         },
+                         {
+                             "title":  "Performance That Lasts",
+                             "body":  "Premium-grade components, high endurance, and rigorous validation are combined to provide years of consistent speed and dependable operation for your most valuable data."
+                         }
+                     ],
+        "features":  [
+                         "PCIe Gen3 x4 NVMe Interface",
+                         "M.2 2280 Single-Sided Design",
+                         "Premium 128-Layer 3D TLC NAND Flash",
+                         "Sequential read speeds up to 3,500 MB/s",
+                         "Sequential write speeds up to 3,200 MB/s",
+                         "Up to 570K/600K IOPS random read/write performance",
+                         "AES 256-bit hardware encryption",
+                         "TRIM, S.M.A.R.T, and Garbage Collection support",
+                         "Low power consumption with intelligent thermal management"
+                     ],
+        "specifications":  [
+                               {
+                                   "label":  "Form Factor",
+                                   "value":  "M.2 2280 Single-Sided"
+                               },
+                               {
+                                   "label":  "Interface",
+                                   "value":  "PCIe Gen3 x4, NVMe 1.4"
+                               },
+                               {
+                                   "label":  "Available Capacities",
+                                   "value":  "500GB, 1TB, 2TB"
+                               },
+                               {
+                                   "label":  "NAND Flash",
+                                   "value":  "Premium 128-Layer 3D TLC NAND Flash"
+                               },
+                               {
+                                   "label":  "Sequential Read Speed",
+                                   "value":  "Up to 3,500 MB/s"
+                               },
+                               {
+                                   "label":  "Sequential Write Speed",
+                                   "value":  "Up to 3,200 MB/s (2TB and 1TB), up to 3,100 MB/s (500GB)"
+                               },
+                               {
+                                   "label":  "Random Read Performance",
+                                   "value":  "Up to 570,000 IOPS"
+                               },
+                               {
+                                   "label":  "Random Write Performance",
+                                   "value":  "Up to 600,000 IOPS"
+                               },
+                               {
+                                   "label":  "TRIM Support",
+                                   "value":  "Supported"
+                               },
+                               {
+                                   "label":  "S.M.A.R.T Monitoring",
+                                   "value":  "Supported"
+                               },
+                               {
+                                   "label":  "Garbage Collection",
+                                   "value":  "Supported"
+                               },
+                               {
+                                   "label":  "Hardware Encryption",
+                                   "value":  "AES 256-bit Encryption, Pyrite 2.0"
+                               },
+                               {
+                                   "label":  "Device Sleep",
+                                   "value":  "Supported"
+                               },
+                               {
+                                   "label":  "Read / Write Latency",
+                                   "value":  "Read: 90 us, Write: 45 us"
+                               },
+                               {
+                                   "label":  "Queue Support",
+                                   "value":  "Up to 256 Queues, up to 1,024 Queue Depth per Queue"
+                               },
+                               {
+                                   "label":  "Operating Temperature",
+                                   "value":  "0C to 70C"
+                               },
+                               {
+                                   "label":  "Temperature Monitoring",
+                                   "value":  "Integrated Temperature Sensor (SMART)"
+                               },
+                               {
+                                   "label":  "MTBF",
+                                   "value":  "Up to 1.5 Million Hours"
+                               },
+                               {
+                                   "label":  "Bit Error Rate",
+                                   "value":  "1 Error per 10^15 Bits Transferred"
+                               },
+                               {
+                                   "label":  "Dimensions",
+                                   "value":  "22.0 x 80.0 x 2.23 mm (Max.)"
+                               },
+                               {
+                                   "label":  "Weight",
+                                   "value":  "Up to 7.0 g"
+                               },
+                               {
+                                   "label":  "Operating Voltage",
+                                   "value":  "3.3V +/- 5%"
+                               }
+                           ],
+        "capacities":  [
+                           {
+                               "capacity":  "500GB",
+                               "read":  "Up to 3,500 MB/s",
+                               "write":  "Up to 3,100 MB/s",
+                               "randomRead":  "Up to 570K IOPS",
+                               "randomWrite":  "Up to 600K IOPS"
+                           },
+                           {
+                               "capacity":  "1TB",
+                               "read":  "Up to 3,500 MB/s",
+                               "write":  "Up to 3,200 MB/s",
+                               "randomRead":  "Up to 570K IOPS",
+                               "randomWrite":  "Up to 600K IOPS"
+                           },
+                           {
+                               "capacity":  "2TB",
+                               "read":  "Up to 3,500 MB/s",
+                               "write":  "Up to 3,200 MB/s",
+                               "randomRead":  "Up to 570K IOPS",
+                               "randomWrite":  "Up to 600K IOPS"
+                           }
+                       ],
+        "whyChoose":  [
+                          "Up to 3,500 MB/s read speed",
+                          "Up to 3,200 MB/s write speed",
+                          "Premium 128-layer 3D TLC NAND Flash",
+                          "100% quality tested",
+                          "Low power consumption",
+                          "Enhanced data protection",
+                          "Reliable long-term performance",
+                          "Designed for gamers, creators, professionals, and businesses"
+                      ],
+        "imageChecklist":  [
+                               "Front View",
+                               "Rear View",
+                               "M.2 2280 PCB Design",
+                               "Controller and NAND Components",
+                               "Installed in Desktop Motherboard",
+                               "Installed in Laptop",
+                               "Retail Packaging"
+                           ]
+    }
 ]

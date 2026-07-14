@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&display=swap");
+
  @tailwind base;
  @tailwind components;
  @tailwind utilities;
 
 
- @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&display=swap");
 
 
  body {
@@ -14,8 +15,10 @@
    font-family: "Titillium Web", sans-serif;
  }
 
- * {
-   cursor: none;
+ @media (pointer: fine) and (min-width: 768px) {
+   * {
+     cursor: none;
+   }
  }
 
  html {

@@ -124,8 +124,10 @@ const AboutUs = () => {
             <div className="absolute inset-0">
                 <img
                     ref={bgRef}
-                    src="/about.jpeg"
+                    src="/about-optimized.jpg"
                     alt="PartPixels storage technology background"
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-contain object-center opacity-10"
                 />
 

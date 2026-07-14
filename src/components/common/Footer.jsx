@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
 import {
     FiShield,
     FiCpu,
@@ -10,28 +11,28 @@ const footerLinks = [
     {
         title: "Company",
         links: [
-            { label: "Home", href: "#home" },
-            { label: "About Company", href: "#about-company" },
-            { label: "Products", href: "#products" },
-            { label: "Explore", href: "#explore" },
+            { label: "Home", href: "/#home" },
+            { label: "About Company", href: "/about-company" },
+            { label: "Products", href: "/#products" },
+            { label: "SSD Knowledge Center", href: "/#ssd-guide" },
         ],
     },
     {
         title: "Products",
         links: [
-            { label: "PIXPRO SATA SSD", href: "#pixpro-sata" },
-            { label: "PIXPRO Gen3 NVMe", href: "#pixpro-gen3" },
-            { label: "PIXPRO TLC M.2", href: "#pixpro-tlc" },
-            { label: "SSD Guide", href: "#ssd-guide" },
+            { label: "PIXPRO CORE", href: "/products/pixpro-core" },
+            { label: "PIXPRO EDGE", href: "/products/pixpro-edge" },
+            { label: "PIXPRO FLEX", href: "/products/pixpro-flex" },
+            { label: "SSD Guide", href: "/#ssd-guide" },
         ],
     },
     {
         title: "Support",
         links: [
-            { label: "Technical Support", href: "#support" },
-            { label: "Warranty / RMA", href: "#warranty" },
-            { label: "Product Information", href: "#product-info" },
-            { label: "Contact Us", href: "#contact" },
+            { label: "Technical Support", href: "/contact-us" },
+            { label: "Warranty / RMA", href: "/warranty" },
+            { label: "Product Information", href: "/#products" },
+            { label: "Contact Us", href: "/contact-us" },
         ],
     },
 ];
@@ -98,14 +99,15 @@ const Footer = () => {
                 <div className="grid grid-cols-1 gap-12 border-b border-white/10 pb-14 lg:grid-cols-[1fr_1.4fr]">
                     {/* Brand */}
                     <div>
-                        <a href="/" className="inline-flex items-center">
+                        <Link to="/" className="inline-flex items-center">
                             <img
-                                src="/logo.png"
+                                src="/logo-optimized.png"
                                 alt="PartPixels Logo"
                                 className="h-20 w-[13rem] object-contain"
                                 loading="lazy"
+                                decoding="async"
                             />
-                        </a>
+                        </Link>
 
                         <p className="mt-6 max-w-md text-sm leading-7 text-white/55">
                             PartPixels delivers reliable storage solutions built for speed,
@@ -143,8 +145,8 @@ const Footer = () => {
                                 <ul className="space-y-4">
                                     {group.links.map((link) => (
                                         <li key={link.label}>
-                                            <a
-                                                href={link.href}
+                                            <Link
+                                                to={link.href}
                                                 className="
                           group inline-flex items-center gap-2 text-sm
                           text-white/45 transition duration-300 hover:text-[#d6a000]
@@ -152,7 +154,7 @@ const Footer = () => {
                                             >
                                                 <span className="h-px w-0 bg-[#d6a000] transition-all duration-300 group-hover:w-5" />
                                                 {link.label}
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
@@ -168,15 +170,12 @@ const Footer = () => {
                     </p>
 
                     <div className="flex flex-wrap items-center gap-5">
-                        <a href="#privacy" className="transition hover:text-white">
+                        <Link to="/contact-us#privacy-notice" className="transition hover:text-white">
                             Privacy Policy
-                        </a>
-                        <a href="#terms" className="transition hover:text-white">
-                            Terms & Conditions
-                        </a>
-                        <a href="#warranty" className="transition hover:text-white">
+                        </Link>
+                        <Link to="/warranty" className="transition hover:text-white">
                             Warranty Policy
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

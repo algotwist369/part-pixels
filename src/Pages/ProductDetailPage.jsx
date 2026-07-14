@@ -136,7 +136,7 @@ const ProductDetailPage = () => {
 
   const primaryMetric = product.metrics[0];
   const secondaryMetric = product.metrics[1];
-  const storySections = product.sections.slice(0, 6);
+  const storySections = product.sections;
   const specs = product.specifications || product.metrics;
 
   return (
@@ -172,7 +172,7 @@ const ProductDetailPage = () => {
 
           <div className="relative flex min-h-[500px] items-center justify-center lg:min-h-[700px]">
             <div className="absolute h-[460px] w-[460px] rounded-full bg-[#d6a000]/18 blur-[120px]" />
-            <img src={product.image} alt={product.fullName} className="pd-hero-product relative z-10 max-h-[700px] w-full scale-110 object-contain brightness-110 contrast-110 drop-shadow-[0_48px_95px_rgba(0,0,0,0.96)]" />
+            <img src={product.image} alt={product.fullName} decoding="async" fetchPriority="high" className="pd-hero-product relative z-10 max-h-[700px] w-full scale-110 object-contain brightness-110 contrast-110 drop-shadow-[0_48px_95px_rgba(0,0,0,0.96)]" />
           </div>
         </div>
 
@@ -218,7 +218,7 @@ const ProductDetailPage = () => {
             <div className="absolute h-[560px] w-[560px] rounded-full border border-[#d6a000]/15" />
             <div className="absolute h-[390px] w-[390px] rounded-full border border-white/[0.06]" />
             <div className="absolute h-[220px] w-[72%] translate-y-40 bg-black/70 blur-[65px]" />
-            <img src={product.image} alt={product.fullName} className="pd-story-product relative z-10 max-h-[620px] w-full object-contain brightness-110 contrast-110 drop-shadow-[0_46px_94px_rgba(0,0,0,0.96)] [transform-style:preserve-3d]" />
+            <img src={product.image} alt={product.fullName} loading="lazy" decoding="async" className="pd-story-product relative z-10 max-h-[620px] w-full object-contain brightness-110 contrast-110 drop-shadow-[0_46px_94px_rgba(0,0,0,0.96)] [transform-style:preserve-3d]" />
           </div>
 
           <div className="relative flex min-h-[72vh] items-center">
@@ -233,7 +233,7 @@ const ProductDetailPage = () => {
                   <h2 className="mt-5 max-w-3xl text-[clamp(2.65rem,5.2vw,6.4rem)] font-black leading-[0.9]">{section.title}</h2>
                   <p className="mt-7 max-w-2xl text-base leading-8 text-white/68 md:text-lg">{section.body}</p>
                   <div className="mt-8 flex lg:hidden">
-                    <img src={product.image} alt={section.title} className="max-h-[260px] w-full object-contain" />
+                    <img src={product.image} alt={section.title} loading="lazy" decoding="async" className="max-h-[260px] w-full object-contain" />
                   </div>
                 </article>
               ))}
@@ -288,6 +288,51 @@ const ProductDetailPage = () => {
         </div>
       </section>
 
+      {product.whyChoose && (
+        <section className="px-5 py-24 md:px-8 lg:py-32">
+          <div className="mx-auto grid max-w-[118rem] gap-10 lg:grid-cols-[0.68fr_1.32fr]">
+            <div className="pd-fade-up">
+              <p className="text-xs font-bold uppercase tracking-[0.46em] text-[#d6a000]">Why Choose PIXPRO?</p>
+              <h2 className="mt-5 text-4xl font-black leading-tight md:text-6xl">Confidence in every detail.</h2>
+            </div>
+            <div className="pd-fade-up grid gap-px bg-white/10 sm:grid-cols-2">
+              {product.whyChoose.map((item, index) => (
+                <div key={item} className="flex min-h-32 items-start gap-5 bg-[#080808] p-6">
+                  <span className="text-sm font-black text-[#d6a000]">{String(index + 1).padStart(2, "0")}</span>
+                  <p className="font-semibold leading-7 text-white/72">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {product.imageChecklist && (
+        <section className="relative overflow-hidden px-5 py-24 md:px-8 lg:py-32">
+          <div className="pointer-events-none absolute right-[8%] top-[15%] h-[30rem] w-[30rem] rounded-full bg-[#d6a000]/10 blur-[130px]" />
+          <div className="relative mx-auto max-w-[118rem]">
+            <div className="pd-fade-up grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.46em] text-[#d6a000]">Product Images</p>
+                <h2 className="mt-5 text-4xl font-black md:text-6xl">See the product from every essential angle.</h2>
+              </div>
+              <p className="max-w-2xl text-base leading-8 text-white/55">A complete photography set for installation, compatibility, packaging, and component reference.</p>
+            </div>
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {product.imageChecklist.map((view, index) => (
+                <article key={view} className="pd-fade-up group relative min-h-72 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-6">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(214,160,0,0.16),transparent_52%)]" />
+                  <img src={product.image} alt={`${product.fullName} ${view}`} loading="lazy" decoding="async" className={`relative mx-auto h-44 w-full object-contain transition duration-500 group-hover:scale-105 ${index % 2 ? "-rotate-3" : "rotate-3"}`} />
+                  <div className="relative mt-5 flex items-center justify-between border-t border-white/10 pt-5">
+                    <p className="font-bold text-white/78">{view}</p>
+                    <span className="text-xs font-black text-[#d6a000]">{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       {product.capacities && (
         <section className="pd-fade-up px-5 pb-28 md:px-8">
           <div className="mx-auto max-w-[118rem]">
@@ -325,5 +370,3 @@ const ProductDetailPage = () => {
 };
 
 export default ProductDetailPage;
-
-

@@ -15,7 +15,7 @@ const navLinks = [
     },
     {
         label: "Products",
-        to: "#products",
+        to: "/#products",
         hasDropdown: true,
         dropdownItems: [
             { label: "PIXPRO CORE - TLC SATA 2.5", to: "/products/pixpro-core" },
@@ -25,7 +25,7 @@ const navLinks = [
     },
     {
         label: "Explore",
-        to: "#explore",
+        to: "/#ssd-guide",
         hasDropdown: false,
     },
 ];
@@ -38,7 +38,6 @@ const actionButtons = [
         dropdownItems: [
             { label: "Contact Us", to: "/contact-us" },
             { label: "Warranty / RMA", to: "/warranty" },
-            { label: "Download", to: "/download" },
             { label: "FAQs", to: "/faqs" },
         ],
     },
@@ -84,8 +83,10 @@ const Navbar = () => {
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-2">
                     <img
-                        src="/logo.png"
+                        src="/logo-optimized.png"
                         alt="PartPixels Logo"
+                        decoding="async"
+                        fetchPriority="high"
                         className="h-24 w-[14rem] rounded-full object-contain"
                     />
                 </Link>
@@ -391,4 +392,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

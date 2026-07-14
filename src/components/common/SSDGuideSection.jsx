@@ -17,6 +17,16 @@ const guideCards = [
     },
     {
         id: 2,
+        title: "Students & Office",
+        type: "SATA SSD / Gen3 NVMe",
+        description:
+            "A responsive, dependable choice for study, office applications, virtual meetings, and everyday multitasking.",
+        speed: "Smooth Productivity",
+        accent: "text-white",
+        line: "bg-white",
+    },
+    {
+        id: 3,
         title: "Gamers",
         type: "PCIe Gen3 / Gen4 NVMe",
         description:
@@ -26,7 +36,7 @@ const guideCards = [
         line: "bg-[#7c3cff]",
     },
     {
-        id: 3,
+        id: 4,
         title: "Creators",
         type: "High-Capacity TLC NVMe",
         description:
@@ -36,7 +46,7 @@ const guideCards = [
         line: "bg-[#c68600]",
     },
     {
-        id: 4,
+        id: 5,
         title: "Business Users",
         type: "TLC NVMe SSD",
         description:
@@ -121,7 +131,7 @@ const SSDGuideSection = () => {
 
                     <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/60 md:text-lg">
                         Upgrading to an SSD is one of the most effective ways to improve
-                        your computer’s speed, boot time, application loading, and overall
+                        your computer&apos;s speed, boot time, application loading, and overall
                         workflow.
                     </p>
                 </div>
@@ -214,7 +224,28 @@ const SSDGuideSection = () => {
                         ))}
                     </div>
                 </div>
-            </div>
+
+                <div className="mt-20 border-t border-white/10 pt-14">
+                    <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+                        <div>
+                            <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#d6a000]">TLC vs QLC NAND Flash</p>
+                            <h3 className="mt-5 text-3xl font-bold leading-tight md:text-5xl">Choose the NAND technology that fits your priorities.</h3>
+                            <p className="mt-6 max-w-xl text-base leading-8 text-white/55">NAND type influences endurance, sustained performance, capacity, and value. Understanding the difference helps you choose with confidence.</p>
+                        </div>
+                        <div className="grid gap-px overflow-hidden rounded-[1.5rem] bg-white/10 md:grid-cols-2">
+                            <article className="bg-[#0a0a0a] p-8">
+                                <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6a000]">TLC · Three Bits per Cell</p>
+                                <h4 className="mt-5 text-2xl font-bold">Performance & Endurance</h4>
+                                <p className="mt-4 text-sm leading-7 text-white/58">TLC NAND provides an excellent balance of speed, endurance, and reliability. It is ideal for consistent performance, professional workloads, gaming, and long-term durability.</p>
+                            </article>
+                            <article className="bg-[#0a0a0a] p-8">
+                                <p className="text-xs font-bold uppercase tracking-[0.3em] text-white/45">QLC · Four Bits per Cell</p>
+                                <h4 className="mt-5 text-2xl font-bold">Capacity & Value</h4>
+                                <p className="mt-4 text-sm leading-7 text-white/58">QLC NAND enables higher storage capacities at a more affordable price. It is well suited to everyday computing, media storage, and general use where capacity is the priority.</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>            </div>
 
             {/* Bottom blend */}
             <div className="pointer-events-none absolute bottom-0 left-0 h-[180px] w-full bg-gradient-to-b from-transparent via-black/90 to-black" />

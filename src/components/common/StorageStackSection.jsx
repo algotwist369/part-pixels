@@ -11,7 +11,7 @@ const stackCards = [
         title: "Unlock the Full Potential of Your System",
         description:
             "Experience blazing-fast boot times, instant application launches, seamless multitasking, and high-speed file transfers with PartPixels PIXPRO SSDs.",
-        image: "/4.png",
+        image: "/pixpro-product.jpg",
         accent: "text-[#d6a000]",
         glow: "bg-[#d6a000]/20",
         stat: "Up to 7,400 MB/s",
@@ -22,7 +22,7 @@ const stackCards = [
         title: "Storage You Can Trust Every Day",
         description:
             "Every PIXPRO SSD is built with premium-quality NAND flash, advanced controller technology, and rigorous quality testing for dependable long-term use.",
-        image: "/5.png",
+        image: "/pixpro-product.jpg",
         accent: "text-[#7c3cff]",
         glow: "bg-[#7c3cff]/20",
         stat: "100% Tested",
@@ -33,7 +33,7 @@ const stackCards = [
         title: "For Creators, Gamers, Professionals & Businesses",
         description:
             "From everyday computing to content creation, gaming, and enterprise workloads, PartPixels SSDs are engineered to meet modern storage demands.",
-        image: "/6.png",
+        image: "/pixpro-product.jpg",
         accent: "text-[#c68600]",
         glow: "bg-[#c68600]/20",
         stat: "Modern Workloads",
@@ -44,7 +44,7 @@ const stackCards = [
         title: "Confidence Built Into Every Drive",
         description:
             "Strict quality standards, transparent product information, and dependable performance help customers make informed decisions with confidence.",
-        image: "/heroimage3.jpeg",
+        image: "/hero-storage.jpg",
         accent: "text-[#ffffff]",
         glow: "bg-white/15",
         stat: "5-Year Warranty",

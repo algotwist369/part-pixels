@@ -1,36 +1,11 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import BorderGlowButton from "../buttons/BorderGlowButton";
+import { Link } from "react-router-dom";
 
 const products = [
-    {
-        id: 1,
-        name: "Beetle X31 SSD",
-        category: "Portable SSD",
-        image: "/4.png",
-        href: "#beetle-x31-ssd",
-        accent: "text-[#d6a000]",
-        glow: "bg-[#d6a000]/20",
-    },
-    {
-        id: 2,
-        name: "Platinum P41 SSD",
-        category: "PCIe 4.0 NVMe M.2",
-        image: "/5.png",
-        href: "#platinum-p41-ssd",
-        accent: "text-[#7c3cff]",
-        glow: "bg-[#7c3cff]/20",
-    },
-    {
-        id: 3,
-        name: "Gold P31 SSD",
-        category: "PCIe 3.0 NVMe M.2",
-        image: "/6.png",
-        href: "#gold-p31-ssd",
-        accent: "text-[#c68600]",
-        glow: "bg-[#c68600]/20",
-    },
-
+    { id: 1, name: "PIXPRO CORE", category: "TLC SATA 2.5", image: "/pixpro-product.jpg", href: "/products/pixpro-core", accent: "text-[#d6a000]", glow: "bg-[#d6a000]/20" },
+    { id: 2, name: "PIXPRO EDGE", category: "TLC M.2 2280 · PCIe Gen3", image: "/pixpro-product.jpg", href: "/products/pixpro-edge", accent: "text-[#7c3cff]", glow: "bg-[#7c3cff]/20" },
+    { id: 3, name: "PIXPRO FLEX", category: "M.2 2280 · Up to 2TB", image: "/pixpro-product.jpg", href: "/products/pixpro-flex", accent: "text-[#c68600]", glow: "bg-[#c68600]/20" },
 ];
 
 const ProductCards = () => {
@@ -125,6 +100,7 @@ const ProductCards = () => {
                                     src={product.image}
                                     alt={product.name}
                                     loading="lazy"
+                                    decoding="async"
                                     className="
                     relative z-10 max-h-[270px] object-contain
                     transition-transform duration-500 ease-out
@@ -145,7 +121,7 @@ const ProductCards = () => {
                                 </p>
 
                                 <div className="mt-5">
-                                    <BorderGlowButton />
+                                    <Link to={product.href} className="inline-flex rounded-lg border border-white/30 px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:border-[#d6a000] hover:text-[#d6a000]">View Product</Link>
                                 </div>
                             </div>
                         </div>

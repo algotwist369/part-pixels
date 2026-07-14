@@ -1,6 +1,7 @@
-const BorderGlowButton = ({ text = "Button" }) => {
+const BorderGlowButton = ({ text = "Button", ...buttonProps }) => {
     return (
         <button
+            {...buttonProps}
             className="
         group relative inline-flex cursor-pointer
         justify-center overflow-hidden

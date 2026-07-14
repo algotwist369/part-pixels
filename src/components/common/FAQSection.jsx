@@ -18,6 +18,10 @@ const faqs = [
             "TLC NAND stores three bits of data per memory cell and offers a strong balance of speed, endurance, and reliability. It is suitable for users who need consistent performance and long-term durability.",
     },
     {
+        question: "What is the difference between TLC and QLC NAND?",
+        answer:
+            "TLC NAND stores three bits per cell and provides a strong balance of speed, endurance, and reliability. QLC NAND stores four bits per cell, enabling higher capacities at a more affordable price for everyday computing and media storage.",
+    },    {
         question: "Which SSD should I choose for my usage?",
         answer:
             "For everyday users, SATA SSD or PCIe Gen3 NVMe SSD is suitable. For students and office work, SATA or Gen3 NVMe works well. Gamers can choose PCIe Gen3 or Gen4 NVMe SSDs. Content creators should prefer high-capacity TLC NVMe SSDs, while business users should choose TLC NVMe SSDs for dependable performance and endurance.",
@@ -182,7 +186,7 @@ const FAQAccordion = () => {
 
                                 <span className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-xl text-white/70">
                                     <span className="faq-plus absolute">+</span>
-                                    <span className="faq-minus absolute">−</span>
+                                    <span className="faq-minus absolute">&minus;</span>
                                 </span>
                             </button>
 

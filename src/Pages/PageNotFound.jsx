@@ -1,7 +1,8 @@
-import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import BorderGlowButton from '../components/buttons/BorderGlowButton'
 
 const PageNotFound = () => {
+  const navigate = useNavigate()
   return (
     <div className="min-h-screen flex flex-col gap-5 items-center justify-center">
 
@@ -9,7 +10,7 @@ const PageNotFound = () => {
         The page you are looking for does not exist.
       </h1>
 
-      <BorderGlowButton text='Back To Home' />
+      <BorderGlowButton type='button' text='Back To Home' onClick={() => navigate('/')} />
     </div>
   )
 }

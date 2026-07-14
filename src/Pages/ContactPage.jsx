@@ -94,6 +94,11 @@ const ContactPage = () => {
 
                 {/* Form */}
                 <form className="mt-14 rounded-3xl border border-white/10 bg-black/55 p-6 backdrop-blur-xl md:p-8">
+                    <div className="mb-6">
+                        <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6a000]">Contact Information</p>
+                        <p className="mt-2 text-sm text-white/40">Tell us how we can reach you.</p>
+                    </div>
+
                     <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                         {inputFields.slice(0, 4).map((field) => (
                             <div key={field.id}>
@@ -110,6 +115,11 @@ const ContactPage = () => {
                                 />
                             </div>
                         ))}
+
+                        <div className="mt-5 border-t border-white/10 pt-8 md:col-span-2">
+                            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6a000]">Inquiry Details</p>
+                            <p className="mt-2 text-sm text-white/40">Choose a category and describe what you need.</p>
+                        </div>
 
                         {/* Category Dropdown */}
                         <div>
@@ -195,7 +205,10 @@ const ContactPage = () => {
                     </div>
 
                     {/* Privacy */}
-                    <p className="mt-6 text-sm leading-7 text-white/45">
+                    <div id="privacy-notice" className="mt-6 border-t border-white/10 pt-6">
+                        <p className="text-xs font-bold uppercase tracking-[0.25em] text-white/70">Privacy Notice</p>
+                    </div>
+                    <p className="mt-3 text-sm leading-7 text-white/45">
                         By submitting this form, you agree that PartPixels may use the
                         information you provide to respond to your inquiry in accordance with
                         our Privacy Policy. Your personal information will be kept secure and
