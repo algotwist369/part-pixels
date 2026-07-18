@@ -1,8 +1,10 @@
 import { FaTelegramPlane } from "react-icons/fa";
 
-const SendButton = () => {
+const SendButton = ({ text = "Send", type = "button", ...buttonProps }) => {
     return (
         <button
+            type={type}
+            {...buttonProps}
             className="
         group
         flex items-center
@@ -10,7 +12,7 @@ const SendButton = () => {
         cursor-pointer
         border-none
         rounded-2xl
-        bg-yellow-600
+        bg-[#5bd7ff]
         px-4 py-3
         pl-4
         text-[20px]
@@ -46,7 +48,7 @@ const SendButton = () => {
           group-hover:translate-x-[5em]
         "
             >
-                Send
+                {text}
             </span>
         </button>
     );

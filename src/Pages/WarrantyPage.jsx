@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { FiDownload } from "react-icons/fi";
+import usePageSeo from "../hooks/usePageSeo";
 
 const warrantyParagraphs = [
     `At PartPixels, we are committed to delivering reliable, high-quality storage solutions. Every genuine 
@@ -53,15 +53,19 @@ const notCovered = [
 ];
 
 const WarrantyPage = () => {
-    useEffect(() => {
-            window.scrollTo(0, 0);
-        }, []);
+    usePageSeo({
+        title: "PartPixels 5-Year SSD Warranty | Coverage & RMA",
+        description: "Read the PartPixels five-year limited SSD warranty, coverage requirements, exclusions, backup policy, and warranty service information.",
+        keywords: ["PartPixels warranty", "SSD warranty", "PIXPRO RMA", "five year SSD warranty"],
+        image: "/pixpro-product.jpg",
+        path: "/warranty",
+    });
     return (
         <main className="min-h-screen bg-black px-5 pt-36 pb-24 text-white">
             <section className="mx-auto max-w-4xl">
                 {/* Page Heading */}
                 <div className="text-center">
-                    <h1 className="text-3xl font-bold uppercase tracking-tight md:text-4xl">
+                    <h1 className="type-page-title font-bold uppercase">
                         Warranty
                     </h1>
 

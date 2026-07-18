@@ -3,9 +3,9 @@ import gsap from "gsap";
 import { Link } from "react-router-dom";
 
 const products = [
-    { id: 1, name: "PIXPRO CORE", category: "TLC SATA 2.5", image: "/pixpro-product.jpg", href: "/products/pixpro-core", accent: "text-[#d6a000]", glow: "bg-[#d6a000]/20" },
+    { id: 1, name: "PIXPRO CORE", category: "TLC SATA 2.5", image: "/pixpro-product.jpg", href: "/products/pixpro-core", accent: "text-[#5bd7ff]", glow: "bg-[#5bd7ff]/20" },
     { id: 2, name: "PIXPRO EDGE", category: "TLC M.2 2280 · PCIe Gen3", image: "/pixpro-product.jpg", href: "/products/pixpro-edge", accent: "text-[#7c3cff]", glow: "bg-[#7c3cff]/20" },
-    { id: 3, name: "PIXPRO FLEX", category: "M.2 2280 · Up to 2TB", image: "/pixpro-product.jpg", href: "/products/pixpro-flex", accent: "text-[#c68600]", glow: "bg-[#c68600]/20" },
+    { id: 3, name: "PIXPRO FLEX", category: "M.2 2280 · Up to 2TB", image: "/pixpro-product.jpg", href: "/products/pixpro-flex", accent: "text-[#38bdf8]", glow: "bg-[#38bdf8]/20" },
 ];
 
 const ProductCards = () => {
@@ -14,6 +14,8 @@ const ProductCards = () => {
     const productRefs = useRef([]);
 
     useEffect(() => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+
         const ctx = gsap.context(() => {
             gsap.fromTo(
                 headingRef.current,
@@ -81,7 +83,7 @@ const ProductCards = () => {
                             ref={(el) => {
                                 if (el) productRefs.current[index] = el;
                             }}
-                            className="group relative flex flex-col items-center text-center"
+                            className="type-card group relative flex flex-col items-center text-center"
                         >
                             {/* Product Glow */}
                             <div
@@ -112,16 +114,16 @@ const ProductCards = () => {
 
                             {/* Content */}
                             <div className="mt-2 flex flex-col items-center md:mt-3">
-                                <h3 className="text-2xl font-bold text-white md:text-[28px]">
+                                <h3 className="font-bold text-white">
                                     {product.name}
                                 </h3>
 
-                                <p className={`mt-4 text-base font-bold ${product.accent}`}>
+                                <p className={`mt-4 font-bold ${product.accent}`}>
                                     {product.category}
                                 </p>
 
                                 <div className="mt-5">
-                                    <Link to={product.href} className="inline-flex rounded-lg border border-white/30 px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:border-[#d6a000] hover:text-[#d6a000]">View Product</Link>
+                                    <Link to={product.href} className="inline-flex rounded-lg border border-white/30 px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:border-[#5bd7ff] hover:text-[#5bd7ff]">View Product</Link>
                                 </div>
                             </div>
                         </div>

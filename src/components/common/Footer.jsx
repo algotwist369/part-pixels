@@ -1,5 +1,4 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
     FiShield,
@@ -14,7 +13,7 @@ const footerLinks = [
             { label: "Home", href: "/#home" },
             { label: "About Company", href: "/about-company" },
             { label: "Products", href: "/#products" },
-            { label: "SSD Knowledge Center", href: "/#ssd-guide" },
+            { label: "SSD Knowledge Center", href: "/explore" },
         ],
     },
     {
@@ -23,7 +22,7 @@ const footerLinks = [
             { label: "PIXPRO CORE", href: "/products/pixpro-core" },
             { label: "PIXPRO EDGE", href: "/products/pixpro-edge" },
             { label: "PIXPRO FLEX", href: "/products/pixpro-flex" },
-            { label: "SSD Guide", href: "/#ssd-guide" },
+            { label: "SSD Guide", href: "/explore" },
         ],
     },
     {
@@ -54,31 +53,24 @@ const footerHighlights = [
 
 const Footer = () => {
     const footerRef = useRef(null);
-    const contentRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.fromTo(
-                contentRef.current,
-                {
-                    y: 40,
-                    opacity: 0,
-                },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 0.8,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: footerRef.current,
-                        start: "top 85%",
-                        once: true,
-                    },
-                }
-            );
-        }, footerRef);
+        const footer = footerRef.current;
+        if (!footer || !("IntersectionObserver" in window)) {
+            setIsVisible(true);
+            return undefined;
+        }
 
-        return () => ctx.revert();
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setIsVisible(true);
+                observer.disconnect();
+            }
+        }, { rootMargin: "160px" });
+
+        observer.observe(footer);
+        return () => observer.disconnect();
     }, []);
 
     return (
@@ -90,20 +82,22 @@ const Footer = () => {
             <div className="pointer-events-none absolute left-0 top-0 h-[180px] w-full bg-gradient-to-b from-black via-black/90 to-transparent" />
 
             {/* Background effects */}
-            <div className="pointer-events-none absolute left-1/2 top-[35%] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[#d6a000]/10 blur-[140px]" />
+            <div className="pointer-events-none absolute left-1/2 top-[35%] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[#5bd7ff]/10 blur-[140px]" />
             <div className="pointer-events-none absolute right-0 bottom-0 h-[420px] w-[420px] rounded-full bg-white/[0.04] blur-[130px]" />
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_42%)]" />
 
-            <div ref={contentRef} className="relative z-10 mx-auto max-w-[110rem]">
+            <div className={`relative z-10 mx-auto max-w-[110rem] transition duration-700 ease-out ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
                 {/* Middle Footer */}
                 <div className="grid grid-cols-1 gap-12 border-b border-white/10 pb-14 lg:grid-cols-[1fr_1.4fr]">
                     {/* Brand */}
                     <div>
                         <Link to="/" className="inline-flex items-center">
                             <img
-                                src="/logo-optimized.png"
+                                src="/partpixels-logo-theme.png"
                                 alt="PartPixels Logo"
-                                className="h-20 w-[13rem] object-contain"
+                                width="1200"
+                                height="234"
+                                className="h-16 w-[16rem] object-contain"
                                 loading="lazy"
                                 decoding="async"
                             />
@@ -123,7 +117,7 @@ const Footer = () => {
                                         key={item.title}
                                         className="flex items-center gap-3 text-sm text-white/60"
                                     >
-                                        <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-[#d6a000]">
+                                        <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-[#5bd7ff]">
                                             <Icon size={16} />
                                         </span>
 
@@ -149,10 +143,10 @@ const Footer = () => {
                                                 to={link.href}
                                                 className="
                           group inline-flex items-center gap-2 text-sm
-                          text-white/45 transition duration-300 hover:text-[#d6a000]
+                          text-white/45 transition duration-300 hover:text-[#5bd7ff]
                         "
                                             >
-                                                <span className="h-px w-0 bg-[#d6a000] transition-all duration-300 group-hover:w-5" />
+                                                <span className="h-px w-0 bg-[#5bd7ff] transition-all duration-300 group-hover:w-5" />
                                                 {link.label}
                                             </Link>
                                         </li>
@@ -166,7 +160,7 @@ const Footer = () => {
                 {/* Bottom Footer */}
                 <div className="flex flex-col gap-5 pt-8 text-sm text-white/40 md:flex-row md:items-center md:justify-between">
                     <p>
-                        © {new Date().getFullYear()} PartPixels. All rights reserved.
+                        ©{new Date().getFullYear()} PartPixels. All rights reserved.
                     </p>
 
                     <div className="flex flex-wrap items-center gap-5">

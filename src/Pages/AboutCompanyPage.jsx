@@ -9,6 +9,7 @@ import {
     FiClock,
     FiMail,
 } from "react-icons/fi";
+import usePageSeo from "../hooks/usePageSeo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -90,6 +91,14 @@ const stats = [
 ];
 
 const AboutCompanyPage = () => {
+    usePageSeo({
+        title: "About PartPixels | SSD Quality, Reliability & Trust",
+        description: "Learn how PartPixels builds dependable PIXPRO SSD storage through premium components, transparent specifications, rigorous testing, and responsive support.",
+        keywords: ["about PartPixels", "SSD manufacturer", "SSD quality testing", "PIXPRO storage", "reliable SSD"],
+        image: "/hero-3.jpg",
+        imageAlt: "PartPixels reliable SSD storage",
+        path: "/about-company",
+    });
     const pageRef = useRef(null);
     const heroRef = useRef(null);
     const missionRef = useRef(null);
@@ -242,7 +251,7 @@ const AboutCompanyPage = () => {
             className="relative overflow-hidden bg-black text-white"
         >
             {/* Background Glow */}
-            <div className="pointer-events-none fixed left-1/2 top-1/2 h-[650px] w-[650px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d6a000]/5 blur-[150px]" />
+            <div className="pointer-events-none fixed left-1/2 top-1/2 h-[650px] w-[650px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#5bd7ff]/5 blur-[150px]" />
 
             {/* Hero */}
             <section className="relative min-h-screen overflow-hidden px-5 pt-36 pb-24">
@@ -265,11 +274,11 @@ const AboutCompanyPage = () => {
                     ref={heroRef}
                     className="relative z-10 mx-auto flex min-h-[calc(100vh-9rem)] max-w-[110rem] flex-col justify-center"
                 >
-                    <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-[#d6a000]">
+                    <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-[#5bd7ff]">
                         About PartPixels
                     </p>
 
-                    <h1 className="max-w-6xl text-5xl font-bold leading-tight md:text-7xl lg:text-8xl">
+                    <h1 className="type-page-title max-w-7xl font-bold">
                         Reliable storage solutions built on quality, clarity, and trust.
                     </h1>
 
@@ -323,7 +332,7 @@ const AboutCompanyPage = () => {
             <section className="relative px-5 py-24">
                 <div className="mx-auto max-w-[110rem]">
                     <div className="mb-14">
-                        <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-[#d6a000]">
+                        <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-[#5bd7ff]">
                             What We Stand For
                         </p>
 
@@ -342,9 +351,9 @@ const AboutCompanyPage = () => {
                                     ref={(el) => {
                                         if (el) valueRefs.current[index] = el;
                                     }}
-                                    className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-7 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-[#d6a000]/40 hover:bg-white/[0.055]"
+                                    className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-7 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-[#5bd7ff]/40 hover:bg-white/[0.055]"
                                 >
-                                    <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-[#d6a000]/10 text-[#d6a000]">
+                                    <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-[#5bd7ff]/10 text-[#5bd7ff]">
                                         <Icon size={22} />
                                     </div>
 
@@ -357,7 +366,7 @@ const AboutCompanyPage = () => {
                                     </p>
 
                                     <div className="mt-8 h-px w-full bg-white/10">
-                                        <div className="h-px w-0 bg-[#d6a000] transition-all duration-500 group-hover:w-full" />
+                                        <div className="h-px w-0 bg-[#5bd7ff] transition-all duration-500 group-hover:w-full" />
                                     </div>
                                 </div>
                             );
@@ -368,11 +377,11 @@ const AboutCompanyPage = () => {
 
             {/* Quality Timeline */}
             <section className="relative overflow-hidden px-5 py-24">
-                <div className="pointer-events-none absolute left-[10%] top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-[#d6a000]/10 blur-[130px]" />
+                <div className="pointer-events-none absolute left-[10%] top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-[#5bd7ff]/10 blur-[130px]" />
 
                 <div className="relative z-10 mx-auto grid max-w-[110rem] grid-cols-1 gap-16 lg:grid-cols-[0.85fr_1.15fr]">
                     <div className="lg:sticky lg:top-28 lg:self-start">
-                        <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-[#d6a000]">
+                        <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-[#5bd7ff]">
                             Quality Process
                         </p>
 
@@ -399,7 +408,7 @@ const AboutCompanyPage = () => {
                                     }}
                                     className="relative pl-20"
                                 >
-                                    <span className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full border border-[#d6a000]/40 bg-black text-sm font-bold text-[#d6a000]">
+                                    <span className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full border border-[#5bd7ff]/40 bg-black text-sm font-bold text-[#5bd7ff]">
                                         {item.id}
                                     </span>
 
@@ -447,7 +456,7 @@ const AboutCompanyPage = () => {
                     className="mx-auto grid max-w-[110rem] grid-cols-1 gap-10 rounded-[2rem] border border-white/10 bg-white/[0.035] p-8 backdrop-blur-sm md:p-12 lg:grid-cols-[1fr_0.9fr]"
                 >
                     <div>
-                        <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-[#d6a000]">
+                        <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-[#5bd7ff]">
                             We Are Here To Help
                         </p>
 
@@ -465,10 +474,10 @@ const AboutCompanyPage = () => {
                     <div className="flex flex-col justify-center gap-4">
                         <a
                             href="mailto:support@partpixels.com"
-                            className="group flex items-center justify-between rounded-2xl border border-white/10 bg-black/40 px-6 py-5 transition hover:border-[#d6a000]/50"
+                            className="group flex items-center justify-between rounded-2xl border border-white/10 bg-black/40 px-6 py-5 transition hover:border-[#5bd7ff]/50"
                         >
                             <div className="flex items-center gap-4">
-                                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#d6a000]/10 text-[#d6a000]">
+                                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#5bd7ff]/10 text-[#5bd7ff]">
                                     <FiMail />
                                 </span>
 
@@ -502,3 +511,4 @@ const AboutCompanyPage = () => {
 };
 
 export default AboutCompanyPage;
+

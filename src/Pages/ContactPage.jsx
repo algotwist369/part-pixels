@@ -1,5 +1,5 @@
-import { FiUploadCloud } from "react-icons/fi";
 import SendButton from "../components/buttons/SendButton";
+import usePageSeo from "../hooks/usePageSeo";
 
 const inquiryCategories = [
     "Product Information",
@@ -49,11 +49,36 @@ const inputFields = [
 
 
 const inputClass =
-    "h-14 w-full rounded-xl border border-white/10 bg-black/50 px-5 text-sm text-white outline-none transition placeholder:text-white/30 focus:border-[#d6a000]/70";
+    "h-14 w-full rounded-xl border border-white/10 bg-black/50 px-5 text-sm text-white outline-none transition placeholder:text-white/30 focus:border-[#5bd7ff]/70";
 
 const labelClass = "mb-3 block text-sm font-medium text-white/60";
 
 const ContactPage = () => {
+    usePageSeo({
+        title: "Contact PartPixels | SSD Support, Sales & Warranty",
+        description: "Contact PartPixels for PIXPRO SSD product information, technical support, warranty and RMA help, sales, distribution, and business inquiries.",
+        keywords: ["contact PartPixels", "PIXPRO support", "SSD technical support", "SSD sales inquiry", "PartPixels RMA"],
+        image: "/pixpro-product.jpg",
+        path: "/contact-us",
+    });
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const subject = formData.get("subject") || "PartPixels website inquiry";
+        const body = [
+            `Name: ${formData.get("fullName")}`,
+            `Country: ${formData.get("country")}`,
+            `Email: ${formData.get("email")}`,
+            `Phone: ${formData.get("phone") || "Not provided"}`,
+            `Category: ${formData.get("category")}`,
+            "",
+            formData.get("message"),
+        ].join("\n");
+
+        window.location.href = `mailto:support@partpixels.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    };
+
     return (
         <main className="relative min-h-screen overflow-hidden bg-black px-5 pt-36 pb-24 text-white">
             {/* Background Video */}
@@ -76,11 +101,11 @@ const ContactPage = () => {
             <section className="relative z-10 mx-auto max-w-5xl">
                 {/* Heading */}
                 <div className="text-center">
-                    <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-[#d6a000]">
+                    <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-[#5bd7ff]">
                         Contact PartPixels
                     </p>
 
-                    <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+                    <h1 className="type-page-title font-bold">
                         We're Here to Help
                     </h1>
 
@@ -93,9 +118,9 @@ const ContactPage = () => {
                 </div>
 
                 {/* Form */}
-                <form className="mt-14 rounded-3xl border border-white/10 bg-black/55 p-6 backdrop-blur-xl md:p-8">
+                <form onSubmit={handleSubmit} className="mt-14 rounded-3xl border border-white/10 bg-black/55 p-6 backdrop-blur-xl md:p-8">
                     <div className="mb-6">
-                        <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6a000]">Contact Information</p>
+                        <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#5bd7ff]">Contact Information</p>
                         <p className="mt-2 text-sm text-white/40">Tell us how we can reach you.</p>
                     </div>
 
@@ -111,13 +136,15 @@ const ContactPage = () => {
                                     name={field.id}
                                     type={field.type}
                                     placeholder={field.placeholder}
+                                    required={["country", "fullName", "email"].includes(field.id)}
+                                    autoComplete={field.id === "fullName" ? "name" : field.id === "phone" ? "tel" : field.id}
                                     className={inputClass}
                                 />
                             </div>
                         ))}
 
                         <div className="mt-5 border-t border-white/10 pt-8 md:col-span-2">
-                            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6a000]">Inquiry Details</p>
+                            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#5bd7ff]">Inquiry Details</p>
                             <p className="mt-2 text-sm text-white/40">Choose a category and describe what you need.</p>
                         </div>
 
@@ -131,6 +158,7 @@ const ContactPage = () => {
                                 id="category"
                                 name="category"
                                 defaultValue=""
+                                required
                                 className={inputClass}
                             >
                                 <option value="" disabled>
@@ -161,6 +189,7 @@ const ContactPage = () => {
                                     name={field.id}
                                     type={field.type}
                                     placeholder={field.placeholder}
+                                    required
                                     className={inputClass}
                                 />
                             </div>
@@ -178,30 +207,9 @@ const ContactPage = () => {
                             name="message"
                             rows="6"
                             placeholder="Write your message here..."
-                            className="w-full resize-none rounded-xl border border-white/10 bg-black/50 px-5 py-4 text-sm leading-7 text-white outline-none transition placeholder:text-white/30 focus:border-[#d6a000]/70"
+                            required
+                            className="w-full resize-none rounded-xl border border-white/10 bg-black/50 px-5 py-4 text-sm leading-7 text-white outline-none transition placeholder:text-white/30 focus:border-[#5bd7ff]/70"
                         />
-                    </div>
-
-                    {/* Upload */}
-                    <div className="mt-5">
-                        <label className={labelClass}>Attach Supporting Files</label>
-
-                        <label className="flex cursor-pointer items-center gap-4 rounded-xl border border-dashed border-white/15 bg-black/40 px-5 py-5 transition hover:border-[#d6a000]/60">
-                            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#d6a000]/10 text-[#d6a000]">
-                                <FiUploadCloud size={22} />
-                            </span>
-
-                            <div>
-                                <p className="text-sm font-semibold text-white">
-                                    Upload supporting file
-                                </p>
-                                <p className="mt-1 text-xs text-white/35">
-                                    Invoice, product photo, screenshot, or document
-                                </p>
-                            </div>
-
-                            <input type="file" name="attachment" className="hidden" />
-                        </label>
                     </div>
 
                     {/* Privacy */}
@@ -216,10 +224,10 @@ const ContactPage = () => {
                         where required by law.
                     </p>
 
+                    <p className="mt-5 text-xs text-white/35">Submitting opens your default email application with the inquiry pre-filled.</p>
+
                     <div className="mt-8 flex justify-end">
-                        <button type="submit">
-                            <SendButton text="Send" />
-                        </button>
+                        <SendButton type="submit" text="Send inquiry" />
                     </div>
                 </form>
 
@@ -234,7 +242,7 @@ const ContactPage = () => {
                             Email:{" "}
                             <a
                                 href="mailto:support@partpixels.com"
-                                className="font-semibold text-[#d6a000] transition hover:text-white"
+                                className="font-semibold text-[#5bd7ff] transition hover:text-white"
                             >
                                 support@partpixels.com
                             </a>
@@ -255,3 +263,4 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
+

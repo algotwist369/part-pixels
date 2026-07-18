@@ -1,51 +1,130 @@
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
- @tailwind base;
- @tailwind components;
- @tailwind utilities;
+:root {
+  --font-display: "Manrope", sans-serif;
+  --font-copy: "Geist Mono", monospace;
+  --text-display: 7rem; /* 112px */
+  --text-page-title: 8rem; /* 128px */
+  --text-copy: 0.875rem; /* 14px */
+  --text-interface: 1rem; /* 16px */
+  --text-card: 1.25rem; /* 20px */
+  --weight-display: 700;
+}
 
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff #050505;
+}
 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #111;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
- body {
-   background-color: #111;
-   color: #ffffff;
-   margin: 0;
-   padding: 0;
-   font-family: "Titillium Web", sans-serif;
- }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
- @media (pointer: fine) and (min-width: 768px) {
-   * {
-     cursor: none;
-   }
- }
+/* Typography system */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+}
 
- html {
-   scroll-behavior: smooth;
- }
+p {
+  font-family: var(--font-copy);
+}
 
- /* Custom Scrollbar */
- ::-webkit-scrollbar {
-   width: 10px;
- }
+p:not(.type-stat) {
+  font-size: var(--text-copy);
+  line-height: 1.75;
+}
 
- ::-webkit-scrollbar-track {
-   background: #050505;
- }
+a,
+button,
+[role="button"] {
+  font-family: var(--font-display);
+  font-size: var(--text-interface);
+}
 
- ::-webkit-scrollbar-thumb {
-   background: linear-gradient(180deg, #ffffff, #777777);
-   border-radius: 999px;
-   border: 2px solid #050505;
- }
+/* Interface labels stay consistent even when a legacy size utility is present. */
+a,
+button,
+[role="button"] {
+  font-size: var(--text-interface) !important;
+}
 
- ::-webkit-scrollbar-thumb:hover {
-   background: linear-gradient(180deg, #ffffff, #b5b5b5);
- }
+.type-stat {
+  font-family: var(--font-display);
+}
 
- /* Firefox Scrollbar */
- html {
-   scrollbar-width: thin;
-   scrollbar-color: #ffffff #050505;
- }
+.type-display {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, var(--text-display));
+  font-weight: var(--weight-display);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.type-page-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vw, var(--text-page-title));
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+}
+
+.type-card,
+.type-card h3,
+.type-card p {
+  font-family: var(--font-display);
+  font-size: var(--text-card) !important;
+}
+
+@media (pointer: fine) and (min-width: 768px) {
+  * {
+    cursor: none;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid #050505;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff, #777777);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ffffff, #b5b5b5);
+}

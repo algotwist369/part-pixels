@@ -6,26 +6,20 @@ import { Link } from "react-router-dom";
 const heroSlides = [
     {
         id: 1,
-        label: "PIXPRO CORE · TLC SATA 2.5",
-        title: "Reliable Performance for Every Day",
-        description: "A responsive SATA SSD upgrade with up to 560 MB/s read speed, broad compatibility, and dependable daily performance.",
-        buttonText: "Explore PIXPRO CORE",
-        image: "/hero-1.jpg",
+        label: "PIXPRO EDGE · TLC M.2 2280",
+        title: "NVMe Speed. No Compromise.",
+        description: "PCIe Gen3 x4 performance for faster gaming, content creation, and everyday productivity.",
+        buttonText: "Explore PIXPRO EDGE",
+        href: "/products/pixpro-edge",
+        image: "/heroimage.jpeg",
     },
     {
         id: 2,
-        label: "PIXPRO EDGE · TLC M.2 2280",
-        title: "High-Speed Performance Without Compromise",
-        description: "PCIe Gen3 x4 NVMe speed for gamers, creators, professionals, and modern productivity workflows.",
-        buttonText: "Explore PIXPRO EDGE",
-        image: "/hero-2.jpg",
-    },
-    {
-        id: 3,
         label: "PIXPRO FLEX · M.2 2280",
-        title: "High Capacity. Lasting Performance.",
-        description: "Up to 3,500 MB/s read speed, premium 128-layer TLC NAND, and capacities up to 2TB for demanding users.",
+        title: "More Capacity. Lasting Speed.",
+        description: "Up to 3,500 MB/s with premium 128-layer TLC NAND and capacities up to 2TB.",
         buttonText: "Explore PIXPRO FLEX",
+        href: "/products/pixpro-flex",
         image: "/hero-3.jpg",
     },
 ];
@@ -33,7 +27,11 @@ const heroSlides = [
 const HomePage = () => {
     const [activeSlide, setActiveSlide] = useState(0);
 
+    const heroRef = useRef(null);
+    const imageMotionRef = useRef(null);
     const imageRef = useRef(null);
+    const spotlightOverlayRef = useRef(null);
+    const spotlightAuraRef = useRef(null);
     const labelRef = useRef(null);
     const titleRef = useRef(null);
     const descRef = useRef(null);
@@ -149,27 +147,104 @@ const HomePage = () => {
         };
     }, []);
 
+    useEffect(() => {
+        const hero = heroRef.current;
+        const imageMotion = imageMotionRef.current;
+        const spotlightOverlay = spotlightOverlayRef.current;
+        const spotlightAura = spotlightAuraRef.current;
+        const finePointer = window.matchMedia("(pointer: fine)");
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        if (!hero || !imageMotion || !spotlightOverlay || !spotlightAura || !finePointer.matches || reducedMotion.matches) return undefined;
+
+        gsap.set(spotlightAura, { xPercent: -50, yPercent: -50 });
+
+        const moveSpotlightX = gsap.quickTo(spotlightOverlay, "--spotlight-x", {
+            duration: 0.32,
+            ease: "power3.out",
+        });
+        const moveSpotlightY = gsap.quickTo(spotlightOverlay, "--spotlight-y", {
+            duration: 0.32,
+            ease: "power3.out",
+        });
+        const moveAuraX = gsap.quickTo(spotlightAura, "x", { duration: 0.4, ease: "power3.out" });
+        const moveAuraY = gsap.quickTo(spotlightAura, "y", { duration: 0.4, ease: "power3.out" });
+        const showAura = gsap.quickTo(spotlightAura, "opacity", { duration: 0.35, ease: "power2.out" });
+        const moveImageX = gsap.quickTo(imageMotion, "x", { duration: 0.85, ease: "power3.out" });
+        const moveImageY = gsap.quickTo(imageMotion, "y", { duration: 0.85, ease: "power3.out" });
+
+        const handlePointerMove = (event) => {
+            const bounds = hero.getBoundingClientRect();
+            const pointerX = event.clientX - bounds.left;
+            const pointerY = event.clientY - bounds.top;
+            const normalizedX = pointerX / bounds.width - 0.5;
+            const normalizedY = pointerY / bounds.height - 0.5;
+
+            moveSpotlightX(pointerX);
+            moveSpotlightY(pointerY);
+            moveAuraX(pointerX);
+            moveAuraY(pointerY);
+            showAura(0.72);
+            moveImageX(normalizedX * -18);
+            moveImageY(normalizedY * -12);
+        };
+
+        const hideSpotlight = () => {
+            moveSpotlightX(-450);
+            moveSpotlightY(-450);
+            showAura(0);
+            moveImageX(0);
+            moveImageY(0);
+        };
+
+        hero.addEventListener("pointermove", handlePointerMove, { passive: true });
+        hero.addEventListener("pointerleave", hideSpotlight);
+
+        return () => {
+            hero.removeEventListener("pointermove", handlePointerMove);
+            hero.removeEventListener("pointerleave", hideSpotlight);
+        };
+    }, []);
+
     return (
         <main
+            ref={heroRef}
             id="home"
             className="relative min-h-screen overflow-hidden bg-black text-white"
         >
             {/* Background Image */}
             <div className="absolute inset-0">
-                <img
-                    ref={imageRef}
-                    key={currentSlide.id}
-                    src={currentSlide.image}
-                    alt={currentSlide.title}
-                    decoding="async"
-                    fetchPriority={activeSlide === 0 ? "high" : "auto"}
-                    className="h-full w-full object-cover"
-                />
+                <div ref={imageMotionRef} className="absolute -inset-4 will-change-transform">
+                    <img
+                        ref={imageRef}
+                        key={currentSlide.id}
+                        src={currentSlide.image}
+                        alt={currentSlide.title}
+                        decoding="async"
+                        fetchPriority={activeSlide === 0 ? "high" : "auto"}
+                        className="h-full w-full object-cover"
+                    />
+                </div>
 
-                {/* Main Overlay */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,transparent_38%,rgba(0,0,0,0.28)_68%,rgba(0,0,0,0.75)_100%)]" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-transparent to-black/65" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/55" />
+                {/* Main overlays with a cursor-following clear-image spotlight */}
+                <div
+                    ref={spotlightOverlayRef}
+                    className="pointer-events-none absolute inset-0 [--spotlight-size:clamp(140px,14vw,220px)] [--spotlight-x:-450px] [--spotlight-y:-450px]"
+                    style={{
+                        WebkitMaskImage: "radial-gradient(circle var(--spotlight-size) at var(--spotlight-x) var(--spotlight-y), transparent 0%, transparent 42%, rgba(0,0,0,0.52) 72%, black 100%)",
+                        maskImage: "radial-gradient(circle var(--spotlight-size) at var(--spotlight-x) var(--spotlight-y), transparent 0%, transparent 42%, rgba(0,0,0,0.52) 72%, black 100%)",
+                    }}
+                >
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,transparent_38%,rgba(0,0,0,0.28)_68%,rgba(0,0,0,0.75)_100%)]" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-transparent to-black/65" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/55" />
+                </div>
+
+                <div
+                    ref={spotlightAuraRef}
+                    className="pointer-events-none absolute left-0 top-0 h-[clamp(280px,28vw,440px)] w-[clamp(280px,28vw,440px)] rounded-full border border-white/[0.07] opacity-0 shadow-[inset_0_0_55px_rgba(255,255,255,0.025),0_0_90px_rgba(91,215,255,0.09)] mix-blend-screen will-change-transform"
+                    aria-hidden="true"
+                />
             </div>
 
             {/* Content */}
@@ -185,21 +260,21 @@ const HomePage = () => {
 
                         <h1
                             ref={titleRef}
-                            className="text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl lg:text-7xl"
+                            className="type-display line-clamp-2 text-balance text-white"
                         >
                             {currentSlide.title}
                         </h1>
 
                         <p
                             ref={descRef}
-                            className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-white/70 md:text-base"
+                            className="mx-auto mt-6 line-clamp-2 max-w-2xl text-balance text-sm leading-7 text-white/70 md:text-base"
                         >
                             {currentSlide.description}
                         </p>
 
                         <div ref={buttonRef} className="mt-9 flex justify-center">
                             <Link
-                                to="/#products"
+                                to={currentSlide.href}
                                 className="
                   group relative inline-flex items-center justify-center
                   overflow-hidden rounded-full border border-white/70
@@ -220,6 +295,7 @@ const HomePage = () => {
             <button
                 type="button"
                 onClick={nextSlide}
+                aria-label="Show next product"
                 className="
           absolute right-8 top-1/2 z-20 hidden h-16 w-16
           -translate-y-1/2 items-center justify-center rounded-full
@@ -234,6 +310,7 @@ const HomePage = () => {
             <button
                 type="button"
                 onClick={prevSlide}
+                aria-label="Show previous product"
                 className="
           absolute left-8 top-1/2 z-20 hidden h-16 w-16
           -translate-y-1/2 items-center justify-center rounded-full
@@ -251,6 +328,8 @@ const HomePage = () => {
                         key={slide.id}
                         type="button"
                         onClick={() => setActiveSlide(index)}
+                        aria-label={`Show ${slide.title}`}
+                        aria-current={activeSlide === index ? "true" : undefined}
                         className={`
               h-2 rounded-full transition-all duration-300
               ${activeSlide === index
@@ -267,6 +346,7 @@ const HomePage = () => {
                 <button
                     type="button"
                     onClick={prevSlide}
+                    aria-label="Show previous product"
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white"
                 >
                     <FiArrowLeft size={20} />
@@ -275,6 +355,7 @@ const HomePage = () => {
                 <button
                     type="button"
                     onClick={nextSlide}
+                    aria-label="Show next product"
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white"
                 >
                     <FiArrowRight size={20} />

@@ -25,7 +25,7 @@ const navLinks = [
     },
     {
         label: "Explore",
-        to: "/#ssd-guide",
+        to: "/explore",
         hasDropdown: false,
     },
 ];
@@ -33,7 +33,7 @@ const navLinks = [
 const actionButtons = [
     {
         label: "Support",
-        to: "#support",
+        to: "/contact-us",
         hasDropdown: true,
         dropdownItems: [
             { label: "Contact Us", to: "/contact-us" },
@@ -83,11 +83,13 @@ const Navbar = () => {
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-2">
                     <img
-                        src="/logo-optimized.png"
+                        src="/partpixels-logo-theme.png"
                         alt="PartPixels Logo"
+                        width="1200"
+                        height="234"
                         decoding="async"
                         fetchPriority="high"
-                        className="h-24 w-[14rem] rounded-full object-contain"
+                        className="h-16 w-[16rem] object-contain"
                     />
                 </Link>
 
@@ -269,6 +271,9 @@ const Navbar = () => {
                 <button
                     type="button"
                     onClick={() => setMenuOpen(!menuOpen)}
+                    aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+                    aria-expanded={menuOpen}
+                    aria-controls="mobile-navigation"
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white md:hidden"
                 >
                     {menuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
@@ -277,6 +282,7 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             <div
+                id="mobile-navigation"
                 className={`
           overflow-hidden transition-all duration-300 md:hidden
           ${menuOpen ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"}
@@ -291,6 +297,8 @@ const Navbar = () => {
                                         <button
                                             type="button"
                                             onClick={() => toggleMobileDropdown(link.label)}
+                                            aria-expanded={openMobileDropdown === link.label}
+                                            aria-controls={`mobile-${link.label.toLowerCase().replaceAll(" ", "-")}`}
                                             className="
                         flex w-full items-center justify-between rounded-xl px-4 py-3
                         text-sm text-white/80 transition
@@ -308,6 +316,7 @@ const Navbar = () => {
                                         </button>
 
                                         <div
+                                            id={`mobile-${link.label.toLowerCase().replaceAll(" ", "-")}`}
                                             className={`
                         overflow-hidden transition-all duration-300
                         ${openMobileDropdown === link.label

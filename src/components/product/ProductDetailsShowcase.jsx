@@ -6,6 +6,14 @@ import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const experienceTheme = {
+  accent: "#5bd7ff",
+  accentSoft: "#a5ecff",
+  tunnelStart: "#02070d",
+  tunnelMid: "#071b2a",
+  tunnelPeak: "#0b3b55",
+};
+
 const products = [
   { name: "PIXPRO CORE", eyebrow: "Reliable everyday performance", image: "/pixpro-product.jpg", metric: "560 MB/s", copy: "A dependable TLC SATA upgrade engineered for faster boot times, responsive applications, silent operation, and broad system compatibility.", href: "/products/pixpro-core" },
   { name: "PIXPRO EDGE", eyebrow: "Performance for gamers and professionals", image: "/pixpro-product.jpg", metric: "3,500 MB/s", copy: "PCIe Gen3 x4 NVMe speed, premium 3D NAND, and intelligent thermal management for demanding modern workloads.", href: "/products/pixpro-edge" },
@@ -36,10 +44,10 @@ const createTunnelTexture = () => {
   const ctx = canvas.getContext("2d");
 
   const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  gradient.addColorStop(0, "#050505");
-  gradient.addColorStop(0.36, "#191006");
-  gradient.addColorStop(0.62, "#3b2708");
-  gradient.addColorStop(1, "#050505");
+  gradient.addColorStop(0, experienceTheme.tunnelStart);
+  gradient.addColorStop(0.36, experienceTheme.tunnelMid);
+  gradient.addColorStop(0.62, experienceTheme.tunnelPeak);
+  gradient.addColorStop(1, experienceTheme.tunnelStart);
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -47,7 +55,7 @@ const createTunnelTexture = () => {
     const x = Math.random() * canvas.width;
     const y = Math.random() * canvas.height;
     const radius = Math.random() * 1.8 + 0.3;
-    ctx.fillStyle = `rgba(214, 160, 0, ${Math.random() * 0.42})`;
+    ctx.fillStyle = `rgba(91, 215, 255, ${Math.random() * 0.42})`;
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, Math.PI * 2);
     ctx.fill();
@@ -84,6 +92,11 @@ const ProductDetailsShowcase = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
       const lowPower = width < 768 || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (width < 768) {
+        gsap.set(productRefs.current, { clearProps: "all", autoAlpha: 1 });
+        return;
+      }
 
       const renderer = new THREE.WebGLRenderer({
         canvas,
@@ -122,7 +135,7 @@ const ProductDetailsShowcase = () => {
       const wireTubeGeometry = new THREE.TubeGeometry(path, lowPower ? 90 : 150, 4.55, lowPower ? 12 : 20, false);
       const wireGeometry = new THREE.EdgesGeometry(wireTubeGeometry);
       const wireMaterial = new THREE.LineBasicMaterial({
-        color: 0xd6a000,
+        color: experienceTheme.accent,
         transparent: true,
         opacity: 0.16,
       });
@@ -139,7 +152,7 @@ const ProductDetailsShowcase = () => {
       const particleGeometry = new THREE.BufferGeometry();
       particleGeometry.setAttribute("position", new THREE.BufferAttribute(particlePositions, 3));
       const particleMaterial = new THREE.PointsMaterial({
-        color: 0xffd27a,
+        color: experienceTheme.accentSoft,
         size: 0.28,
         transparent: true,
         opacity: 0.72,
@@ -150,7 +163,7 @@ const ProductDetailsShowcase = () => {
       scene.add(particles);
 
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.34);
-      const pointLight = new THREE.PointLight(0xffd27a, 2.2, 42);
+      const pointLight = new THREE.PointLight(experienceTheme.accent, 2.2, 42);
       scene.add(ambientLight);
       scene.add(pointLight);
 
@@ -297,32 +310,39 @@ const ProductDetailsShowcase = () => {
     <section
       ref={sectionRef}
       id="product-experience"
-      className="relative h-[650vh] overflow-visible bg-black text-white"
+      className="relative h-auto overflow-visible bg-black text-white md:h-[650vh]"
+      style={{ "--experience-accent": experienceTheme.accent }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden">
-        <canvas ref={canvasRef} className="experience absolute inset-0 z-10 h-full w-full" />
-        <div className="scrollTarget pointer-events-none absolute left-0 top-0 z-0 h-[650vh] w-24" />
+      <div className="relative top-0 min-h-screen overflow-hidden md:sticky md:h-screen">
+        <canvas ref={canvasRef} aria-hidden="true" className="experience absolute inset-0 z-10 hidden h-full w-full md:block" />
+        <div className="scrollTarget pointer-events-none absolute left-0 top-0 z-0 hidden h-[650vh] w-24 md:block" />
         <div className="vignette-radial pointer-events-none absolute inset-0 z-30 after:absolute after:inset-0 after:bg-[radial-gradient(circle,transparent_48%,rgba(0,0,0,0.92)_145%)] after:content-['']" />
         <div className="pointer-events-none absolute left-0 right-0 top-0 z-30 h-40 bg-gradient-to-b from-black via-black/78 to-transparent" />
         <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-30 h-40 bg-gradient-to-t from-black via-black/78 to-transparent" />
 
-        <div className="pointer-events-none absolute inset-0 z-20 bg-[radial-gradient(circle_at_50%_48%,rgba(214,160,0,0.23),transparent_34%),linear-gradient(90deg,rgba(0,0,0,0.64)_0%,rgba(0,0,0,0.2)_48%,rgba(0,0,0,0.66)_100%)]" />
+        <div
+          className="pointer-events-none absolute inset-0 z-20"
+          style={{ background: "radial-gradient(circle at 50% 48%, rgba(91,215,255,0.22), transparent 34%), linear-gradient(90deg, rgba(0,0,0,0.64) 0%, rgba(0,0,0,0.2) 48%, rgba(0,0,0,0.66) 100%)" }}
+        />
 
-        <div className="relative z-40 mx-auto flex h-full w-full max-w-[118rem] items-center justify-center px-5 pt-20 lg:px-12">
+        <div className="relative z-40 mx-auto flex min-h-screen w-full max-w-[118rem] flex-col justify-center gap-12 px-5 py-28 md:h-full md:flex-row md:items-center md:gap-0 md:py-0 md:pt-20 lg:px-12">
           {products.map((product, index) => (
             <article
               key={product.name}
               ref={(el) => {
                 if (el) productRefs.current[index] = el;
               }}
-              className="pointer-events-auto absolute left-0 top-1/2 grid min-h-[min(76vh,33rem)] w-full -translate-y-1/2 grid-cols-1 items-center justify-center gap-8 px-6 py-7 md:grid-cols-[minmax(18rem,25rem)_minmax(24rem,34rem)] md:gap-16 md:px-10 md:py-10 lg:gap-24"
+              className="pointer-events-auto relative grid min-h-[min(76vh,33rem)] w-full grid-cols-1 items-center justify-center gap-8 rounded-[2rem] border border-white/10 bg-white/[0.025] px-6 py-10 md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 md:grid-cols-[minmax(18rem,25rem)_minmax(24rem,34rem)] md:rounded-none md:border-0 md:bg-transparent md:py-10 md:gap-16 md:px-10 lg:gap-24"
             >
               <div
                 className={`product-media relative flex min-h-[250px] w-full items-center justify-center md:min-h-[430px] ${
                   index % 2 === 0 ? "md:order-1" : "md:order-2"
                 }`}
               >
-                <div className="absolute h-60 w-60 rounded-full bg-[#d6a000]/22 blur-[82px]" />
+                <div
+                  className="absolute h-60 w-60 rounded-full blur-[82px]"
+                  style={{ backgroundColor: "rgba(91, 215, 255, 0.22)" }}
+                />
                 <img
                   src={product.image}
                   alt={product.name}
@@ -333,13 +353,13 @@ const ProductDetailsShowcase = () => {
               </div>
 
               <div className={`product-copy w-full max-w-[34rem] ${index % 2 === 0 ? "md:order-2" : "md:order-1"}`}>
-                <p className="text-[11px] font-bold uppercase tracking-[0.42em] text-[#d6a000]">
+                <p className="text-[11px] font-bold uppercase tracking-[0.42em] text-[var(--experience-accent)]">
                   {product.eyebrow}
                 </p>
                 <h3 className="mt-5 max-w-lg text-4xl font-black leading-[0.94] md:text-6xl">
                   {product.name}
                 </h3>
-                <p className="mt-6 text-3xl font-black text-white/92 md:text-5xl">
+                <p className="type-stat mt-6 text-3xl font-black text-white/92 md:text-5xl">
                   {product.metric}
                 </p>
                 <p className="mt-5 max-w-md text-base leading-7 text-white/62">
@@ -348,15 +368,15 @@ const ProductDetailsShowcase = () => {
                 <div className="mt-8 flex gap-3">
                   <Link
                     to={product.href}
-                    className="border border-white/35 px-6 py-3 text-xs font-bold uppercase tracking-[0.24em] text-white/80 transition hover:border-[#d6a000] hover:text-[#d6a000]"
+                    className="border border-white/35 px-6 py-3 text-xs font-bold uppercase tracking-[0.24em] text-white/80 transition hover:border-[var(--experience-accent)] hover:text-[var(--experience-accent)]"
                   >
                     Explore
                   </Link>
                   <Link
-                    to={product.href}
-                    className="bg-white px-6 py-3 text-xs font-bold uppercase tracking-[0.24em] text-black transition hover:bg-[#d6a000]"
+                    to="/contact-us"
+                    className="bg-white px-6 py-3 text-xs font-bold uppercase tracking-[0.24em] text-black transition hover:bg-[var(--experience-accent)]"
                   >
-                    Shop
+                    Contact
                   </Link>
                 </div>
               </div>

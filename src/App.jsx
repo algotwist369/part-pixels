@@ -8,11 +8,13 @@ const AboutCompanyPage = lazy(() => import("./Pages/AboutCompanyPage"));
 const ContactPage = lazy(() => import("./Pages/ContactPage"));
 const ProductDetailPage = lazy(() => import("./Pages/ProductDetailPage"));
 const FAQs = lazy(() => import("./Pages/FAQs"));
+const ExploreHubPage = lazy(() => import("./Pages/ExploreHubPage"));
+const ExploreArticlePage = lazy(() => import("./Pages/ExploreArticlePage"));
 const PageNotFound = lazy(() => import("./Pages/PageNotFound"));
 
 const PageFallback = () => (
   <div className="flex min-h-screen items-center justify-center bg-black text-white">
-    <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/20 border-t-[#d6a000]" aria-label="Loading page" />
+    <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/20 border-t-[#5bd7ff]" aria-label="Loading page" />
   </div>
 );
 
@@ -27,6 +29,8 @@ const App = () => {
           <Route path="/contact-us" element={<ContactPage />} />
           <Route path="/products/:slug" element={<ProductDetailPage />} />
           <Route path="/faqs" element={<FAQs />} />
+          <Route path="/explore" element={<ExploreHubPage />} />
+          <Route path="/explore/:slug" element={<ExploreArticlePage />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>

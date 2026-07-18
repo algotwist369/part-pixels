@@ -12,8 +12,8 @@ const stackCards = [
         description:
             "Experience blazing-fast boot times, instant application launches, seamless multitasking, and high-speed file transfers with PartPixels PIXPRO SSDs.",
         image: "/pixpro-product.jpg",
-        accent: "text-[#d6a000]",
-        glow: "bg-[#d6a000]/20",
+        accent: "text-[#5bd7ff]",
+        glow: "bg-[#5bd7ff]/20",
         stat: "Up to 7,400 MB/s",
     },
     {
@@ -34,8 +34,8 @@ const stackCards = [
         description:
             "From everyday computing to content creation, gaming, and enterprise workloads, PartPixels SSDs are engineered to meet modern storage demands.",
         image: "/pixpro-product.jpg",
-        accent: "text-[#c68600]",
-        glow: "bg-[#c68600]/20",
+        accent: "text-[#38bdf8]",
+        glow: "bg-[#38bdf8]/20",
         stat: "Modern Workloads",
     },
     {
@@ -136,12 +136,12 @@ const StorageStackSection = () => {
                 {/* Background blend */}
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_36%)]" />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black via-[#080808] to-black" />
-                <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d6a000]/5 blur-[130px]" />
+                <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#5bd7ff]/5 blur-[130px]" />
 
                 <div className="relative z-10 mx-auto grid w-full max-w-[110rem] grid-cols-1 items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
                     {/* Left Sticky Text */}
                     <div className="relative z-20">
-                        <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-[#d6a000]">
+                        <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-[#5bd7ff]">
                             Why PartPixels
                         </p>
 
@@ -237,3 +237,4 @@ const StorageStackSection = () => {
 };
 
 export default StorageStackSection;
+
