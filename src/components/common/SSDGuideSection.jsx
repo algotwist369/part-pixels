@@ -68,10 +68,14 @@ const SSDGuideSection = () => {
         const ctx = gsap.context(() => {
             const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             const finePointer = window.matchMedia("(pointer: fine) and (min-width: 768px)").matches;
-
-            if (reducedMotion) return;
+            const mobile = window.innerWidth < 768;
 
             const orbitCards = cardRefs.current;
+
+            if (reducedMotion || mobile) {
+                gsap.set(orbitCards, { clearProps: "all" });
+                return;
+            }
             const orbitDots = gsap.utils.toArray(".guide-orbit-dot");
             const cardCount = orbitCards.length;
             const sideDistance = Math.min(Math.max(window.innerWidth * 0.27, 190), 410);
@@ -304,8 +308,8 @@ const SSDGuideSection = () => {
                 </div>
 
                 <div className="guide-orbit-section relative -mx-5">
-                    <div className="guide-orbit-stage relative h-[100svh] min-h-[680px] overflow-hidden px-5 [perspective:1400px]">
-                        <div ref={leftRef} className="absolute inset-x-5 top-8 z-30 mx-auto flex max-w-5xl items-start justify-between gap-6 md:top-12">
+                    <div className="guide-orbit-stage relative flex flex-col gap-6 py-8 px-5 overflow-visible md:block md:h-[100svh] md:min-h-[680px] md:overflow-hidden md:py-0 md:px-5 [perspective:1400px]">
+                        <div ref={leftRef} className="relative inset-x-0 z-30 flex max-w-5xl items-start justify-between gap-6 md:absolute md:inset-x-5 md:top-12 md:mx-auto">
                             <div>
                                 <p className="font-bold uppercase tracking-[0.32em] text-[#5bd7ff]">Find your performance fit</p>
                                 <p className="mt-2 max-w-sm text-white/42">Scroll to bring each workflow into focus.</p>
@@ -323,9 +327,9 @@ const SSDGuideSection = () => {
                             </div>
                         </div>
 
-                        <div className="pointer-events-none absolute left-1/2 top-[42%] h-[34rem] w-[min(96vw,82rem)] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-[#5bd7ff]/15 [mask-image:linear-gradient(to_bottom,black_0%,black_58%,transparent_94%)]" />
-                        <div className="pointer-events-none absolute left-1/2 top-[42%] h-[24rem] w-[min(76vw,60rem)] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-dashed border-white/[0.07] [mask-image:linear-gradient(to_bottom,black_0%,black_58%,transparent_94%)]" />
-                        <div className="pointer-events-none absolute left-1/2 top-[54%] h-[28rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#5bd7ff]/[0.055] blur-[110px]" />
+                        <div className="pointer-events-none absolute left-1/2 top-[42%] h-[34rem] w-[min(96vw,82rem)] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-[#5bd7ff]/15 [mask-image:linear-gradient(to_bottom,black_0%,black_58%,transparent_94%)] hidden md:block" />
+                        <div className="pointer-events-none absolute left-1/2 top-[42%] h-[24rem] w-[min(76vw,60rem)] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-dashed border-white/[0.07] [mask-image:linear-gradient(to_bottom,black_0%,black_58%,transparent_94%)] hidden md:block" />
+                        <div className="pointer-events-none absolute left-1/2 top-[54%] h-[28rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#5bd7ff]/[0.055] blur-[110px] hidden md:block" />
 
                         {guideCards.map((item, index) => (
                             <div
@@ -333,14 +337,14 @@ const SSDGuideSection = () => {
                                 ref={(el) => {
                                     if (el) cardRefs.current[index] = el;
                                 }}
-                                className="guide-orbit-card absolute left-1/2 top-1/2 w-[min(86vw,29rem)] will-change-transform"
+                                className="guide-orbit-card relative w-full md:absolute md:left-1/2 md:top-1/2 md:w-[min(86vw,29rem)] md:will-change-transform"
                             >
                                 <article className="guide-card-surface group relative min-h-[23rem] overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#070b0f]/90 p-7 shadow-[0_32px_100px_rgba(0,0,0,0.55)] backdrop-blur-xl transition-[border-color,background-color,box-shadow] duration-500 hover:border-[#5bd7ff]/30 hover:bg-[#091219]/95 hover:shadow-[0_35px_110px_rgba(0,0,0,0.68)] md:p-8">
                                     <div className="guide-card-glow pointer-events-none absolute inset-y-0 left-0 z-20 w-1/2 bg-gradient-to-r from-transparent via-[#5bd7ff]/10 to-transparent blur-xl" />
                                     <div className={`guide-card-accent absolute left-0 top-0 h-full w-[3px] ${item.line} opacity-70`} />
 
                                     <div className="mb-9 flex items-center justify-between">
-                                        <span className="font-mono text-[11px] font-bold tracking-[0.26em] text-white/25">0{item.id}</span>
+                                        <span className="font-mono text-[11px] font-bold tracking-[0.26em] text-white/25 whitespace-nowrap">0{item.id}</span>
                                         <span className={`guide-card-badge rounded-full border border-white/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] ${item.accent}`}>
                                             {item.speed}
                                         </span>
@@ -359,7 +363,7 @@ const SSDGuideSection = () => {
                             </div>
                         ))}
 
-                        <div className="absolute bottom-10 left-1/2 z-30 flex -translate-x-1/2 items-center gap-4">
+                        <div className="absolute bottom-10 left-1/2 z-30 hidden items-center gap-4 -translate-x-1/2 md:flex">
                             {guideCards.map((item) => (
                                 <span key={item.id} className="guide-orbit-dot h-1.5 w-1.5 rounded-full bg-[#5bd7ff]" />
                             ))}

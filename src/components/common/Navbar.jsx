@@ -284,8 +284,8 @@ const Navbar = () => {
             <div
                 id="mobile-navigation"
                 className={`
-          overflow-hidden transition-all duration-300 md:hidden
-          ${menuOpen ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"}
+          transition-all duration-300 md:hidden
+          ${menuOpen ? "max-h-[calc(100vh-80px)] opacity-100 overflow-y-auto" : "max-h-0 opacity-0 overflow-hidden"}
         `}
             >
                 <div className="mx-5 mb-5 rounded-2xl border border-white/10 bg-[#111827]/95 p-4 backdrop-blur-xl">

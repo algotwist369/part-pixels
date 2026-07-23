@@ -63,6 +63,12 @@ const StorageStackSection = () => {
 
             if (!cards.length) return;
 
+            const mobile = window.innerWidth < 768;
+            if (mobile) {
+                gsap.set(cards, { clearProps: "all" });
+                return;
+            }
+
             gsap.set(cards, {
                 y: (index) => index * 28,
                 scale: 1,
@@ -131,7 +137,7 @@ const StorageStackSection = () => {
         >
             <div
                 ref={pinRef}
-                className="relative flex min-h-screen items-center overflow-hidden px-5 py-24"
+                className="relative flex min-h-screen items-center overflow-visible md:overflow-hidden px-5 py-12 md:py-24"
             >
                 {/* Background blend */}
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_36%)]" />
@@ -159,7 +165,7 @@ const StorageStackSection = () => {
                     {/* Right Stacked Cards */}
                     <div
                         ref={containerRef}
-                        className="relative grid min-h-[620px] place-items-center"
+                        className="relative flex flex-col gap-6 w-full md:grid md:min-h-[620px] md:place-items-center"
                     >
                         {stackCards.map((item, index) => (
                             <div
@@ -168,7 +174,7 @@ const StorageStackSection = () => {
                                     if (el) cardRefs.current[index] = el;
                                 }}
                                 className="
-                  absolute grid h-[520px] w-full max-w-[760px]
+                  relative md:absolute grid h-auto md:h-[520px] w-full max-w-[760px]
                   grid-cols-1 overflow-hidden rounded-[2rem]
                   border border-white/10 bg-[#101010]/95
                   shadow-[0_30px_120px_rgba(0,0,0,0.65)]

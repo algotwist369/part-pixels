@@ -250,19 +250,22 @@ const ProductDetailsShowcase = () => {
         },
       });
 
-      const transitionTween = gsap.to("#products .group", {
-        y: -110,
-        scale: 0.84,
-        opacity: 0,
-        stagger: 0.08,
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: "#products",
-          start: "72% center",
-          end: "bottom top",
-          scrub: 0.9,
-        },
-      });
+      let transitionTween = null;
+      if (document.querySelector("#products")) {
+        transitionTween = gsap.to("#products .group", {
+          y: -110,
+          scale: 0.84,
+          opacity: 0,
+          stagger: 0.08,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: "#products",
+            start: "72% center",
+            end: "bottom top",
+            scrub: 0.9,
+          },
+        });
+      }
 
       const onPointerMove = (event) => {
         cameraState.mouseX = mapRange(event.clientX, 0, window.innerWidth, 3.22, 3.06);
@@ -287,7 +290,7 @@ const ProductDetailsShowcase = () => {
         window.removeEventListener("resize", onResize);
         cancelAnimationFrame(animationFrame);
         cameraTween.kill();
-        transitionTween.kill();
+        if (transitionTween) transitionTween.kill();
         tunnelGeometry.dispose();
         tunnelMaterial.dispose();
         tunnelTexture.dispose();

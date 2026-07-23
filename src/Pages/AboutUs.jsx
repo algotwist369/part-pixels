@@ -38,10 +38,13 @@ const AboutUs = () => {
                 ? "inset(5% 5% 46% 5% round 1.75rem)"
                 : "inset(7% 52% 7% 5% round 2.5rem)";
 
-            if (reducedMotion) {
-                gsap.set(".about-media", { clipPath: "inset(0% 0% 0% 0% round 0rem)" });
+            if (reducedMotion || mobile) {
+                gsap.set(".about-media", { clipPath: "none" });
                 gsap.set(introWords, { color: "#ffffff" });
-                gsap.set([".about-manifesto", ".about-values", ".about-scanner"], { display: "none" });
+                gsap.set(manifestoWords, { color: "#ffffff" });
+                gsap.set([".about-manifesto", ".about-values"], { autoAlpha: 1 });
+                gsap.set(".about-value-card", { y: 0, opacity: 1 });
+                gsap.set(".about-scanner", { display: "none" });
                 return;
             }
 
@@ -121,8 +124,8 @@ const AboutUs = () => {
 
     return (
         <section ref={sectionRef} id="about-company" className="relative bg-[#020507] text-white">
-            <div ref={stageRef} className="relative h-[100svh] overflow-hidden bg-[#020507]">
-                <div className="about-media absolute inset-0 z-0 overflow-hidden bg-[#061018] will-change-[clip-path,transform]">
+            <div ref={stageRef} className="relative flex flex-col gap-24 py-20 px-5 overflow-visible md:block md:h-[100svh] md:overflow-hidden md:py-0 md:px-0 bg-[#020507]">
+                <div className="about-media absolute inset-0 z-0 overflow-hidden bg-[#061018] md:will-change-[clip-path,transform]">
                     <img
                         src="/about-optimized.jpg"
                         alt="PartPixels solid-state storage technology"
@@ -147,7 +150,7 @@ const AboutUs = () => {
 
                 <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(rgba(91,215,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(91,215,255,0.025)_1px,transparent_1px)] bg-[size:70px_70px] [mask-image:radial-gradient(circle_at_70%_50%,black,transparent_72%)]" />
 
-                <div className="about-intro absolute inset-x-5 bottom-[6%] z-20 md:bottom-auto md:left-[54%] md:right-[5%] md:top-1/2 md:-translate-y-1/2">
+                <div className="about-intro relative z-20 md:absolute md:inset-x-5 md:bottom-auto md:left-[54%] md:right-[5%] md:top-1/2 md:-translate-y-1/2">
                     <div className="about-intro-kicker mb-6 flex items-center gap-4">
                         <span className="h-px w-9 bg-[#5bd7ff]" />
                         <p className="font-bold uppercase tracking-[0.34em] text-[#5bd7ff]">About PartPixels</p>
@@ -161,7 +164,7 @@ const AboutUs = () => {
                     </p>
                 </div>
 
-                <div className="about-manifesto invisible absolute inset-0 z-20 flex items-center justify-center px-5 text-center">
+                <div className="about-manifesto relative z-20 flex items-center justify-center text-center md:invisible md:absolute md:inset-0 md:px-5">
                     <div>
                         <p className="about-manifesto-kicker mb-7 font-bold uppercase tracking-[0.36em] text-[#5bd7ff]">Our promise</p>
                         <WordLine
@@ -174,7 +177,7 @@ const AboutUs = () => {
                     </div>
                 </div>
 
-                <div className="about-values invisible absolute inset-0 z-20 flex flex-col justify-end px-5 pb-6 pt-24 md:px-8 md:pb-8 lg:px-12 lg:pb-12">
+                <div className="about-values relative z-20 flex flex-col justify-end px-0 pt-0 pb-0 md:invisible md:absolute md:inset-0 md:px-8 md:pb-8 md:pt-24 lg:px-12 lg:pb-12">
                     <div className="about-values-heading mb-6 flex items-end justify-between gap-6">
                         <div>
                             <p className="font-bold uppercase tracking-[0.34em] text-[#5bd7ff]">What defines us</p>

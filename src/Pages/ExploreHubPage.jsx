@@ -42,7 +42,7 @@ const ExploreHubPage = () => {
             <span className="h-px w-10 bg-[#5bd7ff]" />
             SSD Knowledge Center
           </div>
-          <h1 className="max-w-6xl text-[clamp(3.4rem,8vw,8rem)] font-bold leading-[0.92] tracking-[-0.055em]">
+          <h1 className="max-w-6xl text-[clamp(2.2rem,8vw,8rem)] font-bold leading-[0.92] tracking-[-0.055em]">
             Storage knowledge,
             <span className="block text-white/38">made practical.</span>
           </h1>

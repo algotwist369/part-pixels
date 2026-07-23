@@ -63,7 +63,8 @@ const StorageImportanceSection = () => {
       const firstPanel = panels[0];
       const secondPanel = panels[1];
 
-      if (reducedMotion) {
+      const mobile = window.innerWidth < 768;
+      if (reducedMotion || mobile) {
         gsap.set(panels, { position: "relative", yPercent: 0, autoAlpha: 1 });
         gsap.set(".storage-word", { color: "#ffffff" });
         return;
@@ -227,7 +228,7 @@ const StorageImportanceSection = () => {
 
   return (
     <section ref={sectionRef} className="relative isolate bg-black text-white">
-      <div ref={pinRef} className="relative min-h-[100svh] overflow-hidden bg-black">
+      <div ref={pinRef} className="relative flex flex-col gap-12 py-12 md:block md:min-h-[100svh] md:overflow-hidden md:py-0 bg-black">
         <div className="storage-star-field pointer-events-none absolute -inset-[8%] z-0 will-change-transform" aria-hidden="true">
           {stars.map((star) => (
             <span
@@ -249,7 +250,7 @@ const StorageImportanceSection = () => {
         {storyPanels.map((panel, panelIndex) => (
           <article
             key={panel.eyebrow}
-            className={`storage-story-panel absolute inset-0 flex min-h-[100svh] items-center justify-center overflow-hidden px-5 py-24 ${panelIndex === 0 ? "storage-panel-one z-10" : "storage-panel-two z-20 bg-[linear-gradient(180deg,rgba(5,5,5,0.9)_0%,rgba(0,0,0,0.86)_28%,rgba(3,3,3,0.9)_100%)] will-change-transform"}`}
+            className={`storage-story-panel relative md:absolute md:inset-0 flex min-h-fit md:min-h-[100svh] items-center justify-center overflow-visible md:overflow-hidden px-5 py-8 md:py-24 ${panelIndex === 0 ? "storage-panel-one z-10" : "storage-panel-two z-20 bg-[linear-gradient(180deg,rgba(5,5,5,0.9)_0%,rgba(0,0,0,0.86)_28%,rgba(3,3,3,0.9)_100%)] md:will-change-transform"}`}
           >
             {panelIndex === 1 && (
               <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
@@ -280,7 +281,7 @@ const StorageImportanceSection = () => {
                 <span className="h-px w-8 bg-[#5bd7ff]/60" />
               </div>
 
-              <h2 className="mx-auto max-w-[92rem] text-balance text-[clamp(3.2rem,7.2vw,7rem)] font-bold leading-[0.94] tracking-[-0.055em]">
+              <h2 className="mx-auto max-w-[92rem] text-balance text-[clamp(2.2rem,6.5vw,7rem)] font-bold leading-[0.94] tracking-[-0.055em]">
                 {panel.title.split(" ").map((word, wordIndex) => (
                   <span key={`${word}-${wordIndex}`} className="storage-word inline-block transition-colors">
                     {word}{wordIndex < panel.title.split(" ").length - 1 ? "\u00a0" : ""}

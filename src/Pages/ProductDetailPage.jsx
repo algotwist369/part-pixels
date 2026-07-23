@@ -47,6 +47,7 @@ const ProductDetailPage = () => {
     const ctx = gsap.context(() => {
       const q = gsap.utils.selector(pageRef);
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const mobile = window.innerWidth < 768;
 
       gsap.set(q(".pd-page-progress"), { scaleX: 0, transformOrigin: "left center" });
       gsap.to(q(".pd-page-progress"), {
@@ -60,7 +61,7 @@ const ProductDetailPage = () => {
         },
       });
 
-      if (reducedMotion) {
+      if (reducedMotion || mobile) {
         gsap.set(q(".pd-title-word-inner, .pd-hero-reveal, .pd-hero-product, .pd-fade-up, .pd-spec-row, .pd-feature-card"), {
           clearProps: "all",
           opacity: 1,
@@ -352,10 +353,10 @@ const ProductDetailPage = () => {
             <img src={product.image} alt={product.fullName} loading="lazy" decoding="async" className="pd-story-product relative z-10 max-h-[620px] w-full object-contain brightness-110 contrast-110 drop-shadow-[0_46px_94px_rgba(0,0,0,0.96)] [transform-style:preserve-3d]" />
           </div>
 
-          <div className="relative flex min-h-[72vh] items-center">
-            <div className="pd-story-card-container relative h-[480px] w-full max-w-4xl lg:h-[540px]">
+          <div className="relative flex min-h-[72vh] items-center w-full">
+            <div className="pd-story-card-container relative flex flex-col gap-6 h-auto md:block md:h-[480px] w-full max-w-4xl lg:h-[540px]">
               {storySections.map((section, index) => (
-                <article key={section.title} className="pd-story-card absolute inset-0 flex flex-col justify-center rounded-[2rem] border border-white/10 bg-black/35 p-7 shadow-[0_30px_100px_rgba(0,0,0,0.45)] backdrop-blur-md md:p-10">
+                <article key={section.title} className="pd-story-card relative md:absolute md:inset-0 flex flex-col justify-center rounded-[2rem] border border-white/10 bg-black/35 p-7 shadow-[0_30px_100px_rgba(0,0,0,0.45)] backdrop-blur-md md:p-10">
                   <div className="mb-7 flex items-center gap-5">
                     <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#5bd7ff]/30 bg-[#5bd7ff]/10 text-sm font-black text-[#5bd7ff]">{String(index + 1).padStart(2, "0")}</span>
                     <span className="h-px flex-1 bg-white/14" />

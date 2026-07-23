@@ -42,7 +42,7 @@ const ExploreArticlePage = () => {
           <div className="grid gap-12 xl:grid-cols-[1.08fr_.92fr] xl:items-end">
             <div>
               <div className="mb-6 font-mono text-xs uppercase tracking-[0.24em] text-[#5bd7ff]">{article.category}</div>
-              <h1 className="max-w-5xl text-[clamp(3.2rem,7vw,7.8rem)] font-bold leading-[0.9] tracking-[-0.06em]">{article.title}</h1>
+              <h1 className="max-w-5xl text-[clamp(2.2rem,7vw,7.8rem)] font-bold leading-[0.9] tracking-[-0.06em]">{article.title}</h1>
               <p className="mt-8 max-w-2xl text-white/58">{article.description}</p>
               <div className="mt-9 flex flex-wrap gap-3">
                 {article.highlights.map((highlight) => (

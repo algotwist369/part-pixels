@@ -45,7 +45,7 @@ const MainHomePage = () => {
     <>
       <HomePage />
       <StorageImportanceSection />
-      <DeferredSection minHeight="650vh">
+      <DeferredSection minHeight={window.innerWidth < 768 ? "120vh" : "650vh"}>
         <Suspense fallback={<div className="min-h-screen bg-black" />}>
           <ProductDetailsShowcase />
         </Suspense>
