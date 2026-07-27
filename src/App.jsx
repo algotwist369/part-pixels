@@ -1,40 +1,53 @@
-import { lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
-import SiteLayout from "./components/common/SiteLayout";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import ProductsPage from "./pages/ProductsPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import KnowledgeCenterPage from "./pages/KnowledgeCenterPage";
+import AboutPage from "./pages/AboutPage";
+import WarrantyPage from "./pages/WarrantyPage";
+import ContactPage from "./pages/ContactPage";
+import BlogPage from "./pages/BlogPage";
+import BlogReadPage from "./pages/BlogReadPage";
+import Navebar from "./components/common/Navebar";
+import Footer from "./components/common/Footer";
+import NotFound from "./components/common/NotFound";
 
-const MainHomePage = lazy(() => import("./Pages/MainHomePage"));
-const WarrantyPage = lazy(() => import("./Pages/WarrantyPage"));
-const AboutCompanyPage = lazy(() => import("./Pages/AboutCompanyPage"));
-const ContactPage = lazy(() => import("./Pages/ContactPage"));
-const ProductDetailPage = lazy(() => import("./Pages/ProductDetailPage"));
-const FAQs = lazy(() => import("./Pages/FAQs"));
-const ExploreHubPage = lazy(() => import("./Pages/ExploreHubPage"));
-const ExploreArticlePage = lazy(() => import("./Pages/ExploreArticlePage"));
-const PageNotFound = lazy(() => import("./Pages/PageNotFound"));
+const AppContent = () => {
+  return (
+    <div className="bg-backgroundPrimary min-h-screen">
+      <Navebar />
+      
+      <Routes>
+        {/* PartPixels Routes */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/products/:id" element={<ProductDetailPage />} />
+        <Route path="/knowledge-center" element={<KnowledgeCenterPage />} />
+        
+        {/* Blog Routes */}
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogReadPage />} />
+        <Route path="/explore" element={<BlogPage />} />
+        <Route path="/explore/:slug" element={<BlogReadPage />} />
 
-const PageFallback = () => (
-  <div className="flex min-h-screen items-center justify-center bg-black text-white">
-    <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/20 border-t-[#5bd7ff]" aria-label="Loading page" />
-  </div>
-);
+        <Route path="/about-us" element={<AboutPage />} />
+        <Route path="/warranty" element={<WarrantyPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+
+        {/* Fallback 404 */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      
+      <Footer />
+    </div>
+  );
+};
 
 const App = () => {
   return (
-    <Suspense fallback={<PageFallback />}>
-      <Routes>
-        <Route element={<SiteLayout />}>
-          <Route path="/" element={<MainHomePage />} />
-          <Route path="/warranty" element={<WarrantyPage />} />
-          <Route path="/about-company" element={<AboutCompanyPage />} />
-          <Route path="/contact-us" element={<ContactPage />} />
-          <Route path="/products/:slug" element={<ProductDetailPage />} />
-          <Route path="/faqs" element={<FAQs />} />
-          <Route path="/explore" element={<ExploreHubPage />} />
-          <Route path="/explore/:slug" element={<ExploreArticlePage />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Route>
-      </Routes>
-    </Suspense>
+    <Router>
+      <AppContent />
+    </Router>
   );
 };
 

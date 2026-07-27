@@ -2,129 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-display: "Manrope", sans-serif;
-  --font-copy: "Geist Mono", monospace;
-  --text-display: 7rem; /* 112px */
-  --text-page-title: 8rem; /* 128px */
-  --text-copy: 0.875rem; /* 14px */
-  --text-interface: 1rem; /* 16px */
-  --text-card: 1.25rem; /* 20px */
-  --weight-display: 700;
-}
-
-html {
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: #ffffff #050505;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #111;
-  color: #ffffff;
-  font-family: var(--font-display);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+/* Custom animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Typography system */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-display);
-}
-
-p {
-  font-family: var(--font-copy);
-}
-
-p:not(.type-stat) {
-  font-size: var(--text-copy);
-  line-height: 1.75;
-}
-
-a,
-button,
-[role="button"] {
-  font-family: var(--font-display);
-  font-size: var(--text-interface);
-}
-
-/* Interface labels stay consistent even when a legacy size utility is present. */
-a,
-button,
-[role="button"] {
-  font-size: var(--text-interface) !important;
-}
-
-.type-stat {
-  font-family: var(--font-display);
-}
-
-.type-display {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 7vw, var(--text-display));
-  font-weight: var(--weight-display);
-  line-height: 0.92;
-  letter-spacing: -0.045em;
-}
-
-.type-page-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 8vw, var(--text-page-title));
-  line-height: 0.88;
-  letter-spacing: -0.055em;
-}
-
-.type-card,
-.type-card h3,
-.type-card p {
-  font-family: var(--font-display);
-  font-size: var(--text-card) !important;
-}
-
-@media (pointer: fine) and (min-width: 768px) {
-  * {
-    cursor: none;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-::-webkit-scrollbar-track {
-  background: #050505;
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out;
 }
 
-::-webkit-scrollbar-thumb {
-  border: 2px solid #050505;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #ffffff, #777777);
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #ffffff, #b5b5b5);
+.animate-delay-500 {
+  animation-delay: 0.5s;
+}
+
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.7s ease;
 }

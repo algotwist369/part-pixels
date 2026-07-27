@@ -1,266 +1,266 @@
-import SendButton from "../components/buttons/SendButton";
-import usePageSeo from "../hooks/usePageSeo";
+import React, { useState, useEffect } from "react";
+import { contactData } from "../data/partpixelsData";
+import { Mail, Clock, Send, CheckCircle, ShieldCheck, MessageSquare } from "lucide-react";
+import MouseGlowCard from "../components/common/MouseGlowCard";
 
-const inquiryCategories = [
-    "Product Information",
-    "Technical Support",
-    "Warranty / RMA",
-    "Sales Inquiry",
-    "Distributor / Dealer Partnership",
-    "OEM / Business Inquiry",
-    "Order Status",
-    "Website Feedback",
-    "Careers",
-    "General Inquiry",
-];
+export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    country: "",
+    fullName: "",
+    email: "",
+    phone: "",
+    category: contactData.categories[0],
+    subject: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [lastWhatsappUrl, setLastWhatsappUrl] = useState("");
 
-const inputFields = [
-    {
-        id: "country",
-        label: "Country *",
-        type: "text",
-        placeholder: "Enter your country",
-    },
-    {
-        id: "fullName",
-        label: "Full Name *",
-        type: "text",
-        placeholder: "Enter your full name",
-    },
-    {
-        id: "email",
-        label: "Email Address *",
-        type: "email",
-        placeholder: "Enter your email",
-    },
-    {
-        id: "phone",
-        label: "Phone Number",
-        type: "tel",
-        placeholder: "Enter your phone number",
-    },
-    {
-        id: "subject",
-        label: "Subject *",
-        type: "text",
-        placeholder: "Briefly describe your inquiry",
-    },
-];
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-const inputClass =
-    "h-14 w-full rounded-xl border border-white/10 bg-black/50 px-5 text-sm text-white outline-none transition placeholder:text-white/30 focus:border-[#5bd7ff]/70";
+    const phoneNum = "918591659477";
+    const textMessage =
+      `*PartPixels Support & Inquiry*%0A%0A` +
+      `👤 *Full Name:* ${encodeURIComponent(formData.fullName)}%0A` +
+      `🌍 *Country:* ${encodeURIComponent(formData.country)}%0A` +
+      `📧 *Email:* ${encodeURIComponent(formData.email)}%0A` +
+      `📞 *Phone:* ${encodeURIComponent(formData.phone || "N/A")}%0A` +
+      `🏷️ *Category:* ${encodeURIComponent(formData.category)}%0A` +
+      `📌 *Subject:* ${encodeURIComponent(formData.subject)}%0A%0A` +
+      `💬 *Message Details:*%0A${encodeURIComponent(formData.message)}`;
 
-const labelClass = "mb-3 block text-sm font-medium text-white/60";
+    const whatsappUrl = `https://wa.me/${phoneNum}?text=${textMessage}`;
+    setLastWhatsappUrl(whatsappUrl);
 
-const ContactPage = () => {
-    usePageSeo({
-        title: "Contact PartPixels | SSD Support, Sales & Warranty",
-        description: "Contact PartPixels for PIXPRO SSD product information, technical support, warranty and RMA help, sales, distribution, and business inquiries.",
-        keywords: ["contact PartPixels", "PIXPRO support", "SSD technical support", "SSD sales inquiry", "PartPixels RMA"],
-        image: "/pixpro-product.jpg",
-        path: "/contact-us",
-    });
+    // Automatically open WhatsApp in new window/app
+    window.open(whatsappUrl, "_blank");
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const formData = new FormData(event.currentTarget);
-        const subject = formData.get("subject") || "PartPixels website inquiry";
-        const body = [
-            `Name: ${formData.get("fullName")}`,
-            `Country: ${formData.get("country")}`,
-            `Email: ${formData.get("email")}`,
-            `Phone: ${formData.get("phone") || "Not provided"}`,
-            `Category: ${formData.get("category")}`,
-            "",
-            formData.get("message"),
-        ].join("\n");
+    setSubmitted(true);
+  };
 
-        window.location.href = `mailto:support@partpixels.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    };
+  return (
+    <div className="min-h-screen bg-backgroundPrimary text-textPrimary pt-28 pb-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="text-highlightText font-semibold text-xs uppercase tracking-widest bg-highlightText/10 px-4 py-1.5 rounded-full border border-highlightText/20">
+            Support & Inquiries
+          </span>
+          <h1 className="text-4xl sm:text-6xl font-black text-white mt-4 mb-4">
+            {contactData.title}
+          </h1>
+          <p className="text-textSecondary max-w-2xl mx-auto text-base sm:text-lg">
+            {contactData.intro}
+          </p>
+        </div>
 
-    return (
-        <main className="relative min-h-screen overflow-hidden bg-black px-5 pt-36 pb-24 text-white">
-            {/* Background Video */}
-            <video
-                className="pointer-events-none fixed inset-0 h-full w-full object-cover opacity-25"
-                src="/video1.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-hidden="true"
-            />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          {/* Left Column: Direct Contact Info */}
+          <div className="space-y-6">
+            <MouseGlowCard>
+              <div className="bg-backgroundSecondary border border-borderColor rounded-3xl p-8 shadow-xl">
+                <h3 className="text-xl font-bold text-white mb-6">Need Immediate Assistance?</h3>
 
-            {/* Video Overlay */}
-            <div className="pointer-events-none fixed inset-0 bg-black/25" />
-            <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.35)_45%,rgba(0,0,0,0.9)_100%)]" />
-            <div className="pointer-events-none fixed inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-highlightText/10 text-highlightText rounded-xl flex items-center justify-center shrink-0">
+                      <Mail className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs text-textSecondary uppercase font-bold">Official Support Email</h4>
+                      <a
+                        href={`mailto:${contactData.directContact.email}`}
+                        className="text-white hover:text-highlightText font-bold text-base transition break-all"
+                      >
+                        {contactData.directContact.email}
+                      </a>
+                    </div>
+                  </div>
 
-            <section className="relative z-10 mx-auto max-w-5xl">
-                {/* Heading */}
-                <div className="text-center">
-                    <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-[#5bd7ff]">
-                        Contact PartPixels
-                    </p>
-
-                    <h1 className="type-page-title font-bold">
-                        We're Here to Help
-                    </h1>
-
-                    <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/65">
-                        Thank you for contacting PartPixels. Whether you have a product
-                        inquiry, technical question, warranty request, partnership proposal,
-                        or general feedback, our team is ready to assist you. Please
-                        complete the form below, and we'll respond as soon as possible.
-                    </p>
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-highlightText/10 text-highlightText rounded-xl flex items-center justify-center shrink-0">
+                      <Clock className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs text-textSecondary uppercase font-bold">Business Hours</h4>
+                      <p className="text-white font-bold text-sm mt-1">{contactData.directContact.hours}</p>
+                    </div>
+                  </div>
                 </div>
+              </div>
+            </MouseGlowCard>
 
-                {/* Form */}
-                <form onSubmit={handleSubmit} className="mt-14 rounded-3xl border border-white/10 bg-black/55 p-6 backdrop-blur-xl md:p-8">
-                    <div className="mb-6">
-                        <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#5bd7ff]">Contact Information</p>
-                        <p className="mt-2 text-sm text-white/40">Tell us how we can reach you.</p>
+            <MouseGlowCard>
+              <div className="bg-backgroundSecondary border border-borderColor rounded-3xl p-8 shadow-xl">
+                <ShieldCheck className="w-10 h-10 text-highlightText mb-3" />
+                <h4 className="text-lg font-bold text-white mb-2">PartPixels Warranty & RMA</h4>
+                <p className="text-textSecondary text-xs leading-relaxed">
+                  For warranty claims or RMA requests, please select <span className="text-highlightText font-semibold">"Warranty / RMA"</span> in the category list and provide your product serial number.
+                </p>
+              </div>
+            </MouseGlowCard>
+          </div>
+
+          {/* Right Column: Contact Form */}
+          <div className="lg:col-span-2">
+            <MouseGlowCard>
+              <div className="bg-backgroundSecondary border border-borderColor rounded-3xl p-8 sm:p-10 shadow-xl">
+                {submitted ? (
+                  <div className="text-center py-12">
+                    <CheckCircle className="w-16 h-16 text-highlightText mx-auto mb-4" />
+                    <h3 className="text-2xl font-black text-white mb-2">Inquiry Ready for WhatsApp</h3>
+                    <p className="text-textSecondary text-base max-w-md mx-auto mb-6">
+                      Your inquiry details have been generated and sent to WhatsApp. Click below if WhatsApp did not open automatically.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <a
+                        href={lastWhatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-highlightText hover:bg-buttonHover text-black font-bold px-6 py-3 rounded-xl transition text-sm flex items-center justify-center gap-2 shadow-lg"
+                      >
+                        <MessageSquare className="w-5 h-5" />
+                        <span>Open WhatsApp Chat</span>
+                      </a>
+                      <button
+                        onClick={() => setSubmitted(false)}
+                        className="bg-backgroundHover text-white font-semibold px-6 py-3 rounded-xl border border-borderColor hover:border-highlightText transition text-sm"
+                      >
+                        Submit Another Inquiry
+                      </button>
                     </div>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <h3 className="text-2xl font-black text-white mb-6">Inquiry Form (Sends via WhatsApp)</h3>
 
-                    <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                        {inputFields.slice(0, 4).map((field) => (
-                            <div key={field.id}>
-                                <label htmlFor={field.id} className={labelClass}>
-                                    {field.label}
-                                </label>
-
-                                <input
-                                    id={field.id}
-                                    name={field.id}
-                                    type={field.type}
-                                    placeholder={field.placeholder}
-                                    required={["country", "fullName", "email"].includes(field.id)}
-                                    autoComplete={field.id === "fullName" ? "name" : field.id === "phone" ? "tel" : field.id}
-                                    className={inputClass}
-                                />
-                            </div>
-                        ))}
-
-                        <div className="mt-5 border-t border-white/10 pt-8 md:col-span-2">
-                            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#5bd7ff]">Inquiry Details</p>
-                            <p className="mt-2 text-sm text-white/40">Choose a category and describe what you need.</p>
-                        </div>
-
-                        {/* Category Dropdown */}
-                        <div>
-                            <label htmlFor="category" className={labelClass}>
-                                Category *
-                            </label>
-
-                            <select
-                                id="category"
-                                name="category"
-                                defaultValue=""
-                                required
-                                className={inputClass}
-                            >
-                                <option value="" disabled>
-                                    Select inquiry category
-                                </option>
-
-                                {inquiryCategories.map((category) => (
-                                    <option
-                                        key={category}
-                                        value={category}
-                                        className="bg-black text-white"
-                                    >
-                                        {category}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-
-                        {/* Subject */}
-                        {inputFields.slice(4).map((field) => (
-                            <div key={field.id}>
-                                <label htmlFor={field.id} className={labelClass}>
-                                    {field.label}
-                                </label>
-
-                                <input
-                                    id={field.id}
-                                    name={field.id}
-                                    type={field.type}
-                                    placeholder={field.placeholder}
-                                    required
-                                    className={inputClass}
-                                />
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Message */}
-                    <div className="mt-5">
-                        <label htmlFor="message" className={labelClass}>
-                            Your Message *
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div>
+                        <label className="block text-xs text-textSecondary uppercase font-bold mb-1.5">
+                          Country *
                         </label>
-
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="6"
-                            placeholder="Write your message here..."
-                            required
-                            className="w-full resize-none rounded-xl border border-white/10 bg-black/50 px-5 py-4 text-sm leading-7 text-white outline-none transition placeholder:text-white/30 focus:border-[#5bd7ff]/70"
+                        <input
+                          type="text"
+                          required
+                          placeholder="e.g. India, United States"
+                          value={formData.country}
+                          onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                          className="w-full bg-backgroundPrimary border border-borderColor rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-highlightText"
                         />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs text-textSecondary uppercase font-bold mb-1.5">
+                          Full Name *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          placeholder="Your full name"
+                          value={formData.fullName}
+                          onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                          className="w-full bg-backgroundPrimary border border-borderColor rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-highlightText"
+                        />
+                      </div>
                     </div>
 
-                    {/* Privacy */}
-                    <div id="privacy-notice" className="mt-6 border-t border-white/10 pt-6">
-                        <p className="text-xs font-bold uppercase tracking-[0.25em] text-white/70">Privacy Notice</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div>
+                        <label className="block text-xs text-textSecondary uppercase font-bold mb-1.5">
+                          Email Address *
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          placeholder="name@example.com"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className="w-full bg-backgroundPrimary border border-borderColor rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-highlightText"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs text-textSecondary uppercase font-bold mb-1.5">
+                          Phone Number
+                        </label>
+                        <input
+                          type="tel"
+                          placeholder="Optional WhatsApp phone number"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          className="w-full bg-backgroundPrimary border border-borderColor rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-highlightText"
+                        />
+                      </div>
                     </div>
-                    <p className="mt-3 text-sm leading-7 text-white/45">
-                        By submitting this form, you agree that PartPixels may use the
-                        information you provide to respond to your inquiry in accordance with
-                        our Privacy Policy. Your personal information will be kept secure and
-                        will not be shared with third parties without your consent, except
-                        where required by law.
+
+                    <div>
+                      <label className="block text-xs text-textSecondary uppercase font-bold mb-1.5">
+                        Inquiry Category *
+                      </label>
+                      <select
+                        value={formData.category}
+                        onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                        className="w-full bg-backgroundPrimary border border-borderColor rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-highlightText"
+                      >
+                        {contactData.categories.map((cat, idx) => (
+                          <option key={idx} value={cat}>
+                            {cat}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs text-textSecondary uppercase font-bold mb-1.5">
+                        Subject *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Briefly describe your inquiry"
+                        value={formData.subject}
+                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                        className="w-full bg-backgroundPrimary border border-borderColor rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-highlightText"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs text-textSecondary uppercase font-bold mb-1.5">
+                        Your Message *
+                      </label>
+                      <textarea
+                        rows={5}
+                        required
+                        placeholder="Provide full details about your inquiry or product serial number for RMA"
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        className="w-full bg-backgroundPrimary border border-borderColor rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-highlightText"
+                      ></textarea>
+                    </div>
+
+                    <p className="text-xs text-disabledText leading-relaxed pt-2">
+                      {contactData.privacyNotice}
                     </p>
 
-                    <p className="mt-5 text-xs text-white/35">Submitting opens your default email application with the inquiry pre-filled.</p>
-
-                    <div className="mt-8 flex justify-end">
-                        <SendButton type="submit" text="Send inquiry" />
-                    </div>
-                </form>
-
-                {/* Need Immediate Assistance */}
-                <div className="mt-12 border-t border-white/10 pt-8 text-center">
-                    <h3 className="text-xl font-bold text-white">
-                        Need Immediate Assistance?
-                    </h3>
-
-                    <div className="mt-5 space-y-2 text-sm leading-7 text-white/55">
-                        <p>
-                            Email:{" "}
-                            <a
-                                href="mailto:support@partpixels.com"
-                                className="font-semibold text-[#5bd7ff] transition hover:text-white"
-                            >
-                                support@partpixels.com
-                            </a>
-                        </p>
-
-                        <p>
-                            Business Hours: Monday - Saturday | 9:30 AM - 6:30 PM IST
-                        </p>
-                    </div>
-
-                    <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/40">
-                        We appreciate your interest in PartPixels and look forward to assisting you.
-                    </p>
-                </div>
-            </section>
-        </main>
-    );
-};
-
-export default ContactPage;
-
+                    <button
+                      type="submit"
+                      className="w-full bg-highlightText hover:bg-buttonHover text-black font-bold py-3.5 rounded-xl transition duration-300 flex items-center justify-center gap-2 text-sm shadow-lg"
+                    >
+                      <MessageSquare className="w-5 h-5" />
+                      <span>Send Inquiry via WhatsApp</span>
+                    </button>
+                  </form>
+                )}
+              </div>
+            </MouseGlowCard>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

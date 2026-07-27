@@ -1,0 +1,69 @@
+# PartPixels Full Hardware Documentation & Reference Guide
+
+Brand: PartPixels
+Website: https://partpixels.com
+Support Email: support@partpixels.com
+Support Phone / WhatsApp: +91 85916 59477
+Business Hours: Monday – Saturday | 9:30 AM – 6:30 PM (IST)
+Warranty: 5-Year Limited Warranty
+
+---
+
+## 1. Product Lineup
+
+### Product 1: PIXPRO CORE (TLC SATA 2.5)
+- Form Factor: 2.5-inch Internal Solid State Drive
+- Interface: SATA III (6 Gb/s) (backward compatible with SATA II & SATA I)
+- Sequential Read Speed: Up to 560 MB/s
+- NAND Flash Type: High-Quality 3D NAND Flash Memory
+- Target Use Cases: Laptop HDD replacements, desktop PC upgrades, office workstations, secondary storage.
+- Key Technologies: TRIM support, S.M.A.R.T monitoring, NCQ, DevSleep low power mode, Garbage Collection.
+- Warranty: 5 Years Limited Warranty.
+
+### Product 2: PIXPRO EDGE (TLC M.2 2280 NVMe)
+- Form Factor: M.2 2280 Single-Sided
+- Interface: PCIe Gen3 x4, NVMe 1.4 Protocol
+- Sequential Read Speed: Up to 3,500 MB/s
+- Sequential Write Speed: Up to 3,000 MB/s
+- NAND Flash Type: Premium 3D TLC NAND Flash Memory
+- Target Use Cases: Gaming PCs, laptops, high-speed workstations, 4K video editing rigs.
+- Key Features: Low power consumption, intelligent dynamic thermal throttling, AES 256-bit encryption.
+- Warranty: 5 Years Limited Warranty.
+
+### Product 3: PIXPRO FLEX (M.2 2280 NVMe 128-Layer TLC)
+- Form Factor: M.2 2280 Single-Sided Design
+- Interface: PCIe Gen3 x4, NVMe 1.4 Protocol
+- Available Capacities: 500GB, 1TB, 2TB
+- Sequential Read Speed: Up to 3,500 MB/s
+- Sequential Write Speed: 2TB & 1TB: Up to 3,200 MB/s | 500GB: Up to 3,100 MB/s
+- Random Read Performance: Up to 570,000 IOPS
+- Random Write Performance: Up to 600,000 IOPS
+- NAND Flash Type: Premium 128-Layer 3D TLC NAND Flash
+- Encryption & Security: Hardware AES 256-bit Encryption, TCG Pyrite 2.0
+- Read/Write Latency: Read: 90 µs | Write: 45 µs
+- Queue Support: Up to 256 Queues, 1024 Queue Depth per Queue
+- MTBF (Mean Time Between Failures): Up to 1.5 Million Hours
+- Bit Error Rate (BER): 1 Error per 10¹⁵ Bits Transferred
+- Operating Temperature: 0°C to 70°C (with integrated SMART thermal sensor)
+- Operating Voltage: 3.3V ± 5%
+- Dimensions & Weight: 22.0 × 80.0 × 2.23 mm | Weight: Up to 7.0 g
+- Warranty: 5 Years Limited Warranty.
+
+---
+
+## 2. 5-Year Limited Warranty Policy Details
+
+- Policy Overview: Every genuine PartPixels PIXPRO SSD comes with a Five (5) Year Limited Warranty starting from the original purchase date.
+- Eligibility: Valid for the original purchaser upon presentation of a valid purchase invoice/receipt and serial number.
+- Coverage Scope: Covers manufacturing defects and component failures under normal operating conditions.
+- Resolution: PartPixels will repair, replace with an equivalent or higher-capacity model, or issue an appropriate remedy.
+- Exclusions: Physical damage, liquid damage, unauthorized repairs, modified serial numbers, normal wear and tear beyond rated TBW limits, or secondary data recovery costs.
+- Data Backup Notice: Users are instructed to maintain regular external data backups. PartPixels is not liable for data loss during warranty inspections.
+
+---
+
+## 3. Storage Knowledge & Technical Articles
+
+1. Why Upgrade to an SSD?: Traditional mechanical HDDs use spinning magnetic platters (5400/7200 RPM) causing latency and vulnerability to mechanical shock. Upgrading to PartPixels PIXPRO SSDs reduces boot times from minutes to seconds, accelerates game level load times, and enhances battery efficiency.
+2. SATA vs NVMe SSD: SATA III is capped at 600 MB/s bandwidth, while PCIe Gen3 x4 NVMe utilizes multi-lane PCIe architecture delivering bandwidth up to 3,500 MB/s-over 6x faster than standard SATA SSDs.
+3. TLC vs QLC NAND Flash: 3D TLC (Triple-Level Cell) stores 3 bits per cell, offering superior write endurance (TBW), higher IOPS, and sustained write speeds compared to QLC (Quad-Level Cell) memory. PartPixels utilizes 128-Layer 3D TLC NAND for maximum reliability.

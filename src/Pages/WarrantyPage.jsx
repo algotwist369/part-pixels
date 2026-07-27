@@ -1,167 +1,104 @@
-import { FiDownload } from "react-icons/fi";
-import usePageSeo from "../hooks/usePageSeo";
+import React, { useEffect } from "react";
+import { warrantyData } from "../data/partpixelsData";
+import { ShieldCheck, CheckCircle, XCircle, AlertTriangle, HardDrive } from "lucide-react";
 
-const warrantyParagraphs = [
-    `At PartPixels, we are committed to delivering reliable, high-quality storage solutions. Every genuine 
-    PartPixels PIXPRO SSD is manufactured using premium components and undergoes rigorous quality testing 
-    to ensure dependable performance. To demonstrate our confidence in our products, we provide a Five (5) Year 
-    Limited Warranty from the original date of purchase.`,
+import MouseGlowCard from "../components/common/MouseGlowCard";
 
-    `This warranty is valid only for the original purchaser and is non-transferable. Warranty service is available 
-only upon presentation of a valid proof of purchase from an authorized PartPixels reseller or distributor. 
-Products replaced or repaired under this warranty will continue to be covered for the remainder of the original 
-warranty period and will not receive a new warranty term. `,
+export default function WarrantyPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-    `If a PartPixels SSD is found to have a manufacturing defect or fails under normal operating conditions during 
-the warranty period, PartPixels, at its sole discretion, will repair the product, replace it with an equivalent or 
-higher-capacity model (subject to availability), or provide an appropriate remedy in accordance with our 
-warranty policy. Any replacement product may be new or refurbished and will meet the functional 
-specifications of the original product. `,
+  return (
+    <div className="min-h-screen bg-backgroundPrimary text-textPrimary pt-28 pb-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="text-highlightText font-semibold text-xs uppercase tracking-widest bg-highlightText/10 px-4 py-1.5 rounded-full border border-highlightText/20">
+            Official Warranty Policy
+          </span>
+          <h1 className="text-4xl sm:text-6xl font-black text-white mt-4 mb-4">
+            {warrantyData.subtitle}
+          </h1>
+          <p className="text-textSecondary max-w-2xl mx-auto text-base sm:text-lg">
+            5 Years of dependable protection from the original date of purchase.
+          </p>
+        </div>
 
-    `To request warranty service, customers must provide the product serial number, proof of purchase, and any 
-additional information required by PartPixels or an authorized service partner. Before returning any product for 
-warranty service, customers are strongly advised to back up all important data, as PartPixels is not responsible 
-for any loss, corruption, or recovery of data stored on the SSD. `,
+        {/* Overview Box */}
+        <MouseGlowCard className="mb-10">
+          <div className="bg-backgroundSecondary border border-highlightText/30 rounded-3xl p-8 shadow-xl">
+            <div className="flex items-center gap-3 mb-4">
+              <ShieldCheck className="w-8 h-8 text-highlightText" />
+              <h2 className="text-2xl font-black text-white">Warranty Commitment</h2>
+            </div>
+            <p className="text-textSecondary text-base leading-relaxed mb-6">
+              {warrantyData.description}
+            </p>
 
-    ` This limited warranty does not cover products that have been damaged due to misuse, improper installation, 
-unauthorized repair or modification, physical damage, electrical damage, liquid exposure, accidents, fire, natural 
-disasters, or operation outside the product's specified operating conditions. The warranty is also void if the 
-product label, serial number, or identification markings have been removed, altered, or damaged. `,
-
-    `This warranty gives you specific legal rights, and you may also have additional rights that vary depending on 
-your country or region. To the maximum extent permitted by applicable law, PartPixels shall not be liable for 
-any indirect, incidental, special, punitive, or consequential damages, including but not limited to loss of data, 
-business interruption, loss of profits, or any costs exceeding the original purchase price of the product. `,
-];
-
-const coverageIncludes = [
-    "Warranty Period: 5 Years from the original purchase date",
-    "Coverage: Manufacturing defects under normal use",
-    "Eligible Customer: Original purchaser only",
-    "Proof Required: Valid purchase invoice and product serial number",
-    "Warranty Resolution: Repair, replacement, or equivalent product, subject to inspection and availability",
-];
-
-const notCovered = [
-    "Physical or accidental damage",
-    "Improper installation or misuse",
-    "Unauthorized repair or modification",
-    "Damage caused by water, fire, or electrical surges",
-    "Normal wear and tear",
-    "Products with removed or altered serial numbers",
-    "Data loss or data recovery costs",
-];
-
-const WarrantyPage = () => {
-    usePageSeo({
-        title: "PartPixels 5-Year SSD Warranty | Coverage & RMA",
-        description: "Read the PartPixels five-year limited SSD warranty, coverage requirements, exclusions, backup policy, and warranty service information.",
-        keywords: ["PartPixels warranty", "SSD warranty", "PIXPRO RMA", "five year SSD warranty"],
-        image: "/pixpro-product.jpg",
-        path: "/warranty",
-    });
-    return (
-        <main className="min-h-screen bg-black px-5 pt-36 pb-24 text-white">
-            <section className="mx-auto max-w-4xl">
-                {/* Page Heading */}
-                <div className="text-center">
-                    <h1 className="type-page-title font-bold uppercase">
-                        Warranty
-                    </h1>
-
-                    <div className="mx-auto mt-6 h-px w-16 bg-white/70" />
+            <div className="space-y-3 pt-4 border-t border-borderColor/60">
+              {warrantyData.policyDetails.map((detail, idx) => (
+                <div key={idx} className="flex items-start gap-3 text-sm text-textSecondary">
+                  <CheckCircle className="w-5 h-5 text-highlightText shrink-0 mt-0.5" />
+                  <span>{detail}</span>
                 </div>
+              ))}
+            </div>
+          </div>
+        </MouseGlowCard>
 
-                {/* Content */}
-                <div className="mt-24">
-                    <h2 className="text-center text-2xl font-bold md:text-3xl">
-                        PartPixels 5-Year Limited Warranty
-                    </h2>
+        {/* Included vs Excluded Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Coverage Includes */}
+          <MouseGlowCard className="h-full">
+            <div className="bg-backgroundSecondary border border-borderColor rounded-3xl p-8 shadow-xl h-full">
+              <h3 className="text-xl font-extrabold text-white mb-6 flex items-center gap-2">
+                <CheckCircle className="w-6 h-6 text-highlightText" /> Warranty Coverage Includes
+              </h3>
+              <div className="space-y-4">
+                {warrantyData.coverageIncludes.map((item, idx) => (
+                  <div key={idx} className="bg-backgroundPrimary p-4 rounded-xl border border-borderColor/60">
+                    <p className="text-xs text-highlightText font-bold uppercase">{item.label}</p>
+                    <p className="text-sm font-semibold text-white mt-1">{item.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </MouseGlowCard>
 
-                    <div className="mt-8 h-px w-full bg-white/15" />
+          {/* Warranty Does Not Cover */}
+          <MouseGlowCard className="h-full">
+            <div className="bg-backgroundSecondary border border-borderColor rounded-3xl p-8 shadow-xl h-full">
+              <h3 className="text-xl font-extrabold text-white mb-6 flex items-center gap-2">
+                <XCircle className="w-6 h-6 text-red-500" /> Warranty Does Not Cover
+              </h3>
+              <div className="space-y-3">
+                {warrantyData.coverageExcludes.map((exc, idx) => (
+                  <div key={idx} className="flex items-start gap-3 bg-backgroundPrimary p-3.5 rounded-xl border border-borderColor/60 text-sm text-textSecondary">
+                    <XCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                    <span>{exc}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </MouseGlowCard>
+        </div>
 
-                    <div className="mt-10 space-y-7 text-sm leading-8 text-white/60">
-                        {warrantyParagraphs.map((paragraph, index) => (
-                            <p key={index}>{paragraph}</p>
-                        ))}
-                    </div>
-
-                    <div className="mt-10 h-px w-full bg-white/15" />
-
-                    {/* Coverage */}
-                    <div className="mt-14 grid grid-cols-1 gap-12 md:grid-cols-2">
-                        <div>
-                            <h3 className="text-xl font-bold text-white">
-                                Warranty Coverage Includes
-                            </h3>
-
-                            <ul className="mt-6 space-y-4 text-sm leading-7 text-white/60">
-                                {coverageIncludes.map((item) => (
-                                    <li key={item} className="flex gap-3">
-                                        <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-white/70" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h3 className="text-xl font-bold text-white">
-                                Warranty Does Not Cover
-                            </h3>
-
-                            <ul className="mt-6 space-y-4 text-sm leading-7 text-white/60">
-                                {notCovered.map((item) => (
-                                    <li key={item} className="flex gap-3">
-                                        <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-white/70" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-
-                    {/* Backup Policy */}
-                    <div className="mt-16">
-                        <h3 className="text-xl font-bold text-white">
-                            Backup and Recovery Policy
-                        </h3>
-
-                        <p className="mt-6 text-sm leading-8 text-white/60">
-                            At PartPixels, we are committed to delivering reliable storage solutions, but we strongly
-                            recommend that customers regularly back up their important data to prevent loss caused by
-                            accidental deletion, hardware failure, software corruption, or unforeseen events. Before
-                            installing, formatting, updating firmware, or returning an SSD for warranty service, always
-                            create a complete backup of your files. While our products undergo rigorous quality testing,
-                            PartPixels is not responsible for any loss, corruption, or recovery of data stored on the
-                            device. Maintaining multiple backups on separate storage devices or cloud services is the best
-                            way to ensure your valuable information remains safe and accessible at all times.
-
-                        </p>
-                    </div>
-
-                    <div className="mt-12 h-px w-full bg-white/15" />
-
-                    {/* Download Button */}
-                    <div className="mt-10 flex justify-center">
-                        <a
-                            href="/partpixels-warranty.pdf"
-                            download
-                            className="
-                                    inline-flex items-center gap-3 rounded-full border border-white/30
-                                    px-7 py-3 text-xs font-bold uppercase tracking-[0.2em]
-                                    text-white/70 transition
-                                    hover:border-white hover:text-white
-                                "
-                        >
-                            <FiDownload />
-                            Download Warranty PDF
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </main>
-    );
-};
-
-export default WarrantyPage;
+        {/* Backup and Recovery Policy */}
+        <MouseGlowCard>
+          <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-3xl p-8 shadow-xl">
+            <div className="flex items-center gap-3 mb-4">
+              <AlertTriangle className="w-8 h-8 text-yellow-400" />
+              <h2 className="text-2xl font-black text-white">
+                {warrantyData.backupPolicy.title}
+              </h2>
+            </div>
+            <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+              {warrantyData.backupPolicy.text}
+            </p>
+          </div>
+        </MouseGlowCard>
+      </div>
+    </div>
+  );
+}

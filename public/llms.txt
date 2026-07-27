@@ -1,0 +1,22 @@
+# PartPixels - Official High-Performance SSD Storage Solutions
+
+> PartPixels (https://partpixels.com) is a premier storage technology brand specializing in high-speed, reliable solid-state drives (SSDs). Our product line includes PCIe Gen3 x4 NVMe M.2 2280 SSDs and 2.5-inch SATA III SSDs with 3D NAND Flash memory, intelligent thermal management, hardware encryption, and a 5-Year Limited Warranty.
+
+## Core Products & Specifications
+
+- [PIXPRO CORE - TLC SATA 2.5 SSD](https://partpixels.com/products/pixpro-core): 2.5-inch SATA III (6 Gb/s) SSD delivering up to 560 MB/s sequential read speed. Engineered for everyday laptop and desktop upgrades with 3D NAND Flash.
+- [PIXPRO EDGE - TLC M.2 2280 NVMe SSD](https://partpixels.com/products/pixpro-edge): PCIe Gen3 x4 NVMe 1.4 M.2 2280 SSD delivering sequential read speeds up to 3,500 MB/s and write speeds up to 3,000 MB/s. Built for gamers, content creators, and workstations.
+- [PIXPRO FLEX - M.2 2280 NVMe SSD](https://partpixels.com/products/pixpro-flex): Premium 128-Layer 3D TLC NAND Flash NVMe SSD delivering up to 3,500 MB/s read, 3,200 MB/s write, up to 570,000 IOPS random read, 600,000 IOPS random write, and AES 256-bit hardware encryption.
+
+## Technical Knowledge & Blog Articles
+
+- [Why Upgrade to an SSD?](https://partpixels.com/blog/why-upgrade-to-ssd): Explains performance benefits of upgrading traditional HDDs to SSDs, including reduced boot times, faster file transfers, and shock resistance.
+- [SATA SSD vs NVMe SSD Guide](https://partpixels.com/blog/sata-vs-nvme-ssd): Comprehensive comparison of SATA III (up to 560 MB/s) vs PCIe NVMe interface speeds (up to 3,500 MB/s).
+- [TLC vs QLC NAND Flash Breakdown](https://partpixels.com/blog/tlc-vs-qlc-nand-flash): Detailed guide on 3D TLC (Triple-Level Cell) endurance, IOPS performance, and long-term write longevity vs QLC memory cells.
+- [Choosing the Right SSD](https://partpixels.com/blog/choosing-right-ssd): Recommendations for gamers, students, video editors, and business professionals.
+
+## Customer Support & Warranty Policy
+
+- [5-Year Limited Warranty Policy](https://partpixels.com/warranty): Details coverage terms, proof of purchase requirements, RMA resolution, and data backup guidelines.
+- [Support & Contact Inquiry](https://partpixels.com/contact): Direct WhatsApp inquiry line, support email (`support@partpixels.com`), and official business hours (Mon–Sat | 9:30 AM – 6:30 PM IST).
+- [About PartPixels](https://partpixels.com/about-us): Brand vision, 100% factory quality testing standards, and transparent specs commitment.
