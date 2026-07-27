@@ -45,13 +45,16 @@ export default function QuickProductBar() {
             <MouseGlowCard key={prod.id} className="h-full">
               <Link
                 to={prod.path}
-                className="group block bg-backgroundSecondary/60 border border-borderColor/60 rounded-2xl p-6 h-full flex flex-col items-center justify-between text-center transition duration-300 hover:border-highlightText/60 shadow-xl"
+                className="group block bg-transparent border border-borderColor/60 rounded-2xl p-6 h-full flex flex-col items-center justify-between text-center transition duration-300 hover:border-highlightText/60 shadow-xl"
               >
                 <div className="w-full">
-                  <div className="h-36 w-full flex items-center justify-center overflow-hidden mb-4 bg-backgroundPrimary/40 rounded-xl p-2">
+                  <div className="h-36 w-full flex items-center justify-center overflow-hidden mb-4 bg-transparent p-2">
                     <img
                       src={prod.img}
                       alt={prod.name}
+                      fetchPriority="high"
+                      decoding="async"
+                      loading="eager"
                       className="h-full w-auto object-contain transition duration-500 group-hover:scale-110 drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]"
                     />
                   </div>

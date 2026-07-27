@@ -42,7 +42,7 @@ const ProductShowcase = () => {
                   </p>
 
                   {/* Product Hardware Image */}
-                  <div className="my-4 h-48 w-full bg-backgroundPrimary/60 rounded-xl border border-borderColor/40 flex items-center justify-center p-3 overflow-hidden group-hover:border-highlightText/30 transition duration-300">
+                  <div className="my-4 h-48 w-full bg-transparent flex items-center justify-center p-3 overflow-hidden transition duration-300">
                     <img
                       src={product.image}
                       alt={product.name}
