@@ -6,19 +6,11 @@ import { Zap, ArrowRight } from "lucide-react";
 const quickProducts = [
   {
     id: "pixpro-edge",
-    img: "/assets/images/image (6).jpeg",
+    img: "/assets/images/image (7).jpeg",
     name: "PIXPRO EDGE",
     subtitle: "PCIe Gen4 x4 NVMe",
     speed: "UP TO 6,000+ MB/S",
     path: "/products/pixpro-edge",
-  },
-  {
-    id: "pixpro-flex",
-    img: "/assets/pixpro-product-2.png",
-    name: "PIXPRO FLEX",
-    subtitle: "128-Layer 3D TLC NVMe",
-    speed: "UP TO 3,500 MB/S",
-    path: "/products/pixpro-flex",
   },
   {
     id: "pixpro-core",
@@ -27,6 +19,14 @@ const quickProducts = [
     subtitle: "TLC SATA III 2.5\"",
     speed: "UP TO 550 MB/S",
     path: "/products/pixpro-core",
+  },
+  {
+    id: "pixpro-flex",
+    img: "/assets/pixpro-product-2.png",
+    name: "PIXPRO FLEX",
+    subtitle: "128-Layer 3D TLC NVMe",
+    speed: "UP TO 3,500 MB/S",
+    path: "/products/pixpro-flex",
   },
 ];
 

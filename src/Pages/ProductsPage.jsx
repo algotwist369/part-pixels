@@ -15,7 +15,7 @@ export default function ProductsPage() {
     image: "/assets/images/image (6).jpeg",
   });
 
-  const [selectedProduct, setSelectedProduct] = useState(productsData[2]); // PIXPRO FLEX by default
+  const [selectedProduct, setSelectedProduct] = useState(productsData[0]); // PIXPRO EDGE by default
 
   useEffect(() => {
     window.scrollTo(0, 0);
