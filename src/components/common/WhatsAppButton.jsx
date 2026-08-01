@@ -1,7 +1,7 @@
 import React from "react";
 
 const WhatsAppButton = ({
-  phone = "918591659477", // ✅ No + or spaces
+  phone = "919819555225", // ✅ Client WhatsApp number
   message = "Hello, I'm interested in your services!", // ✅ Default message
   text,
   active = true,

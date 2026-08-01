@@ -4,6 +4,7 @@ export const partpixelsInfo = {
   brandName: "PartPixels",
   tagline: "Experience Next-Generation Storage",
   supportEmail: "support@partpixels.com",
+  supportPhone: "+91 98195 55225",
   businessHours: "Monday – Saturday | 9:30 AM – 6:30 PM (IST)",
   warrantyPeriod: "5-Year Limited Warranty",
 };
@@ -15,7 +16,7 @@ export const heroContent = {
   description:
     "At PartPixels, our PIXPRO SSDs are designed to deliver outstanding performance, helping you boot faster, transfer files in seconds, and handle demanding workloads with ease.",
   highlights: [
-    { title: "Extreme Performance", text: "PCIe Gen4 & Gen3 NVMe SSDs delivering up to 7,400 MB/s read speeds." },
+    { title: "Extreme Performance", text: "PCIe Gen4 & Gen3 NVMe SSDs delivering up to 6,000+ MB/s read speeds." },
     { title: "Built for Reliability", text: "Premium-quality 3D NAND flash and 100% factory quality testing." },
     { title: "5-Year Limited Warranty", text: "Long-term peace of mind with dependable warranty protection." },
     { title: "Designed for Every Need", text: "Tailored for laptops, desktops, gaming rigs, and enterprise systems." },
@@ -24,7 +25,7 @@ export const heroContent = {
 
 export const whyStorageMatters = {
   title: "Why Storage Devices Matter",
-  text: "In today's digital world, your data is one of your most valuable assets. A reliable storage device ensures your files, memories, projects, and business information remain safe, accessible, and protected. Fast storage also improves system performance, reducing boot times and accelerating applications for a smoother experience. Choosing a high-quality SSD means investing in speed, reliability, and long-term peace of mind-because every byte matters.",
+  text: "High-speed storage enhances overall system performance by delivering faster boot times, quicker application launches, and a more responsive computing experience. Investing in a reliable SSD isn't just about improving performance-it's about safeguarding what matters most and ensuring lasting peace of mind, because every byte matters.",
 };
 
 export const productsData = [
@@ -34,69 +35,66 @@ export const productsData = [
     subheading: "PIXPRO CORE - TLC SATA 2.5",
     tagline: "Reliable everyday performance",
     interface: "2.5-inch SATA III (6 Gb/s)",
-    readSpeed: "Up to 560 MB/s",
+    readSpeed: "Up to 550 MB/s",
+    writeSpeed: "Up to 510 MB/s",
     nandType: "High-Quality 3D NAND Flash",
     category: "SATA SSD",
-    image: "/assets/pixpro-product-3.png",
+    image: "/assets/images/image (4).jpeg",
     galleryImages: [
-      "/assets/pixpro-product-3.png",
-      "/assets/pixpro-product-1.png",
-      "/assets/pixpro-product-2.png",
+      "/assets/images/image (4).jpeg",
+      "/assets/images/image (1).jpeg",
+      "/assets/images/image (3).jpeg",
+      "/assets/images/image (2).jpeg",
+      "/assets/images/image (5).jpeg",
     ],
     description:
       "The PIXPRO SATA SSD is designed to deliver a perfect balance of speed, reliability, and efficiency for everyday computing. Whether you're upgrading an older laptop or building a dependable desktop, it provides faster boot times, smoother application performance, and an overall more responsive computing experience.",
     features: [
       "Engineered for Everyday Excellence - faster boot times and responsive computing.",
-      "Faster Performance, Better Productivity - sequential read speeds up to 560 MB/s.",
+      "Faster Performance, Better Productivity - sequential read speeds up to 550 MB/s and write speeds up to 510 MB/s.",
       "Built for Reliability - 3D NAND Flash & advanced controller technology.",
       "Efficient, Silent & Durable - no moving parts, low power consumption, shock-resistant.",
       "Broad System Compatibility - standard 2.5-inch SATA III (6 Gb/s) interface.",
       "Quality You Can Trust - 100% factory functional and performance tested.",
     ],
     imageViews: [
-      "Front View",
-      "Rear View",
-      "2.5\" SATA Connector",
-      "Internal PCB & NAND Layout (optional)",
-      "Retail Packaging",
-      "Installed in Laptop",
-      "Installed in Desktop",
+      "Studio 3D Render",
+      "Front & Back Dual View",
+      "360-Degree Multi-Angle View",
+      "Product Dimensions (100x70x7mm)",
+      "Retail Packaging Box",
     ],
   },
   {
     id: "pixpro-edge",
     name: "PIXPRO EDGE",
-    subheading: "PIXPRO EDGE - TLC M.2 2280",
-    tagline: "High-speed performance for gamers and professionals",
-    interface: "PCIe Gen3 x4 NVMe (M.2 2280)",
-    readSpeed: "Up to 3,500 MB/s",
-    writeSpeed: "Up to 3,000 MB/s",
+    subheading: "PIXPRO EDGE - PCIe Gen4 NVMe M.2 2280",
+    tagline: "High-speed PCIe Gen4 NVMe performance for gamers and professionals",
+    interface: "PCIe Gen4 x4 NVMe (M.2 2280)",
+    readSpeed: "Up to 6,000+ MB/s",
+    writeSpeed: "Up to 3,500+ MB/s",
     nandType: "Premium 3D NAND Flash",
     category: "NVMe SSD",
-    image: "/assets/pixpro-product-1.png",
+    image: "/assets/images/image (6).jpeg",
     galleryImages: [
+      "/assets/images/image (6).jpeg",
+      "/assets/images/image (7).jpeg",
       "/assets/pixpro-product-1.png",
-      "/assets/pixpro-product-2.png",
-      "/assets/pixpro-product-3.png",
     ],
     description:
-      "Take your computing experience to the next level with the PartPixels PIXPRO Gen3 NVMe SSD. Built on the PCIe Gen3 x4 interface, it delivers exceptional speed, responsiveness, and reliability for everyday users, professionals, creators, and gamers.",
+      "Take your computing experience to the next level with the PartPixels PIXPRO Gen4 NVMe SSD. Built on the high-speed PCIe Gen4 x4 interface, it delivers exceptional speed, responsiveness, and reliability for everyday users, professionals, creators, and gamers.",
     features: [
-      "Unleash Everyday Performance - built on PCIe Gen3 x4 interface.",
-      "High-Speed Performance - read up to 3,500 MB/s and write up to 3,000 MB/s.",
+      "Unleash Extreme Performance - built on PCIe Gen4 x4 interface.",
+      "Blazing-Fast Speed - read up to 6,000+ MB/s and write up to 3,500+ MB/s.",
       "Built for Reliability - premium 3D NAND Flash and intelligent firmware.",
       "Optimized Power Efficiency - low power consumption & intelligent thermal management.",
       "Compact Form Factor - M.2 2280 design ideal for desktops, laptops, and workstations.",
-      "Quality You Can Trust - 100% tested for performance, compatibility, and reliability.",
+      "Quality You Can Trust - 100% factory tested for performance, compatibility, and reliability.",
     ],
     imageViews: [
-      "Front View",
-      "Rear View",
-      "M.2 2280 PCB Design",
-      "Controller & NAND Components",
-      "Installed in Desktop Motherboard",
-      "Installed in Laptop",
-      "Retail Packaging",
+      "Installed in RGB Gaming Motherboard",
+      "PCIe Gen4 Gold Edition Installation",
+      "Single-Sided M.2 2280 Design",
     ],
   },
   {
@@ -112,8 +110,8 @@ export const productsData = [
     image: "/assets/pixpro-product-2.png",
     galleryImages: [
       "/assets/pixpro-product-2.png",
-      "/assets/pixpro-product-3.png",
-      "/assets/pixpro-product-1.png",
+      "/assets/images/image (7).jpeg",
+      "/assets/images/image (6).jpeg",
     ],
     description:
       "Unlock the full potential of your PC with the PartPixels PIXPRO Gen3 NVMe SSD. Designed for users who demand speed, reliability, and efficiency, PIXPRO delivers exceptional performance for gaming, content creation, professional workloads, and everyday computing.",
@@ -176,12 +174,12 @@ export const knowledgeCenterData = {
         {
           type: "SATA SSD",
           details:
-            "SATA SSDs use the SATA interface and deliver read speeds of up to 560 MB/s, making them an excellent upgrade for older laptops and desktops.",
+            "SATA SSDs use the SATA interface and deliver read speeds of up to 550 MB/s and write speeds of up to 510 MB/s, making them an excellent upgrade for older laptops and desktops.",
         },
         {
           type: "NVMe SSD",
           details:
-            "NVMe SSDs use the PCIe interface, offering speeds of up to 3,500 MB/s on PCIe Gen3 and up to 7,400 MB/s on PCIe Gen4. They are ideal for gaming, content creation, video editing, software development, and professional workloads.",
+            "NVMe SSDs use the PCIe interface, offering speeds of up to 3,500 MB/s on PCIe Gen3 and up to 6,000+ MB/s on PCIe Gen4. They are ideal for gaming, content creation, video editing, software development, and professional workloads.",
         },
       ],
     },
@@ -207,7 +205,7 @@ export const knowledgeCenterData = {
       recommendations: [
         { role: "Everyday Users", ssd: "SATA SSD or PCIe Gen3 NVMe SSD" },
         { role: "Students & Office Work", ssd: "SATA SSD or Gen3 NVMe SSD" },
-        { role: "Gamers", ssd: "PCIe Gen3 or Gen4 NVMe SSD" },
+        { role: "Gamers & Creators", ssd: "PCIe Gen4 NVMe SSD (up to 6,000+ MB/s)" },
         { role: "Content Creators", ssd: "High-capacity TLC NVMe SSD" },
         { role: "Business & Professional Users", ssd: "TLC NVMe SSD for dependable performance and endurance" },
       ],
@@ -253,9 +251,19 @@ export const warrantyData = {
     "Data loss or data recovery costs",
   ],
   backupPolicy: {
-    title: "Backup and Recovery Policy",
+    title: "Data Backup Policy",
     text:
-      "At PartPixels, we are committed to delivering reliable storage solutions, but we strongly recommend that customers regularly back up their important data to prevent loss caused by accidental deletion, hardware failure, software corruption, or unforeseen events. Before installing, formatting, updating firmware, or returning an SSD for warranty service, always create a complete backup of your files. While our products undergo rigorous quality testing, PartPixels is not responsible for any loss, corruption, or recovery of data stored on the device.",
+      `Your data is valuable, and protecting it is your responsibility. While PartPixels SSDs are
+        engineered and thoroughly tested for reliability and performance, no storage device can
+        guarantee complete protection against data loss. 
+        We strongly recommend creating and maintaining regular backups of all important files using
+        a separate storage device or cloud backup service. Before installing, formatting, updating
+        firmware, transferring ownership, or returning your SSD for warranty service, ensure that all
+        data has been securely backed up.
+        PartPixels is not responsible for the loss, corruption, or recovery of data stored on any SSD.
+        Customers are solely responsible for safeguarding their data through regular backups. As a
+        best practice, always maintain at least one current backup of your important files to minimise
+        the risk of data loss.`,
   },
 };
 
@@ -264,6 +272,7 @@ export const contactData = {
   subtitle: "We're Here to Help",
   intro:
     "Thank you for contacting PartPixels. Whether you have a product inquiry, technical question, warranty request, partnership proposal, or general feedback, our team is ready to assist you. Please complete the form below, and we'll respond as soon as possible.",
+  whatsappNumber: "919819555225",
   categories: [
     "Product Information",
     "Technical Support",
@@ -280,6 +289,7 @@ export const contactData = {
     "By submitting this form, you agree that PartPixels may use the information you provide to respond to your inquiry in accordance with our Privacy Policy. Your personal information will be kept secure and will not be shared with third parties without your consent, except where required by law.",
   directContact: {
     email: "support@partpixels.com",
+    phone: "+91 98195 55225",
     hours: "Monday – Saturday | 9:30 AM – 6:30 PM (IST)",
   },
 };
@@ -295,7 +305,7 @@ export const faqData = [
     id: "faq-2",
     question: "What is the difference between SATA SSDs and NVMe SSDs?",
     answer:
-      "SATA SSDs (like PIXPRO CORE) use the 2.5-inch SATA III interface with speeds up to 560 MB/s, making them ideal for upgrading older laptops and desktops. NVMe SSDs (like PIXPRO EDGE & FLEX) use the high-speed PCIe M.2 interface delivering speeds up to 3,500 MB/s-over 6x faster than SATA SSDs-making them perfect for gaming, video editing, 3D rendering, and heavy workloads.",
+      "SATA SSDs (like PIXPRO CORE) use the 2.5-inch SATA III interface with read speeds up to 550 MB/s and write speeds up to 510 MB/s, making them ideal for upgrading older laptops and desktops. NVMe SSDs (like PIXPRO EDGE & FLEX) use high-speed PCIe M.2 interfaces delivering speeds up to 6,000+ MB/s on Gen4-making them perfect for gaming, video editing, 3D rendering, and heavy workloads.",
   },
   {
     id: "faq-3",
@@ -322,4 +332,3 @@ export const faqData = [
       "PartPixels NVMe SSDs feature hardware AES 256-bit encryption and TCG Pyrite 2.0 security protocols. They also support TRIM, S.M.A.R.T monitoring, DevSleep low-power state, and intelligent dynamic thermal management to protect data and maintain peak operating stability.",
   },
 ];
-

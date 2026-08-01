@@ -3,8 +3,18 @@ import { Link } from "react-router-dom";
 import { productsData } from "../data/partpixelsData";
 import { ShieldCheck, Zap, HardDrive, Check, Server, Cpu } from "lucide-react";
 import MouseGlowCard from "../components/common/MouseGlowCard";
+import usePageSeo from "../hooks/usePageSeo";
 
 export default function ProductsPage() {
+  usePageSeo({
+    title: "PIXPRO SSD Series - PCIe Gen4, NVMe & SATA III | PartPixels",
+    description:
+      "Explore PartPixels PIXPRO SSD Series including PIXPRO CORE (SATA 2.5), PIXPRO EDGE (PCIe Gen4 NVMe up to 6,000+ MB/s), and PIXPRO FLEX (TLC NVMe). 5-Year Limited Warranty.",
+    keywords: ["PartPixels Products", "PIXPRO CORE", "PIXPRO EDGE", "PIXPRO FLEX", "Gen4 NVMe SSD", "SATA III SSD"],
+    path: "/products",
+    image: "/assets/images/image (6).jpeg",
+  });
+
   const [selectedProduct, setSelectedProduct] = useState(productsData[2]); // PIXPRO FLEX by default
 
   useEffect(() => {

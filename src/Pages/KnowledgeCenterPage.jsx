@@ -1,8 +1,17 @@
 import React, { useEffect } from "react";
 import { knowledgeCenterData } from "../data/partpixelsData";
 import { BookOpen, Zap, HardDrive, ShieldCheck, CheckCircle2, HelpCircle } from "lucide-react";
+import usePageSeo from "../hooks/usePageSeo";
 
 export default function KnowledgeCenterPage() {
+  usePageSeo({
+    title: "SSD Knowledge Center - SATA vs NVMe & TLC NAND Guide",
+    description:
+      "Learn about SSD performance, SATA vs NVMe bandwidth, 3D TLC NAND endurance, and choosing the right SSD for gaming, laptops, and workstations.",
+    keywords: ["SSD Knowledge Center", "SATA vs NVMe", "TLC vs QLC NAND", "SSD Upgrade Guide", "PartPixels SSD"],
+    path: "/knowledge-center",
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -57,7 +66,7 @@ export default function KnowledgeCenterPage() {
               <h3 className="text-xl font-extrabold text-white mt-3 mb-3">SATA SSD</h3>
               <p className="text-textSecondary text-sm leading-relaxed">
                 SATA SSDs use the SATA interface and deliver read speeds of up to{" "}
-                <span className="text-highlightText font-bold">560 MB/s</span>, making them an excellent upgrade for older laptops and desktops.
+                <span className="text-highlightText font-bold">550 MB/s</span>, making them an excellent upgrade for older laptops and desktops.
               </p>
             </div>
 
@@ -69,7 +78,7 @@ export default function KnowledgeCenterPage() {
               <p className="text-textSecondary text-sm leading-relaxed">
                 NVMe SSDs use the PCIe interface, offering speeds of up to{" "}
                 <span className="text-highlightText font-bold">3,500 MB/s</span> on PCIe Gen3 and up to{" "}
-                <span className="text-highlightText font-bold">7,400 MB/s</span> on PCIe Gen4. Ideal for gaming, 4K video editing, content creation, and professional workloads.
+                <span className="text-highlightText font-bold">6,000+ MB/s</span> on PCIe Gen4. Ideal for gaming, 4K video editing, content creation, and professional workloads.
               </p>
             </div>
           </div>

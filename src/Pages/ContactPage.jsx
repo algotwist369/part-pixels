@@ -2,8 +2,17 @@ import React, { useState, useEffect } from "react";
 import { contactData } from "../data/partpixelsData";
 import { Mail, Clock, Send, CheckCircle, ShieldCheck, MessageSquare } from "lucide-react";
 import MouseGlowCard from "../components/common/MouseGlowCard";
+import usePageSeo from "../hooks/usePageSeo";
 
 export default function ContactPage() {
+  usePageSeo({
+    title: "Contact Us & WhatsApp Support - PartPixels Storage",
+    description:
+      "Get in touch with PartPixels technical support, sales inquiries, warranty requests, and partnership proposals via email or WhatsApp.",
+    keywords: ["PartPixels Contact", "PartPixels WhatsApp Support", "SSD Technical Support"],
+    path: "/contact",
+  });
+
   const [formData, setFormData] = useState({
     country: "",
     fullName: "",
@@ -23,7 +32,7 @@ export default function ContactPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const phoneNum = "918591659477";
+    const phoneNum = "919819555225";
     const textMessage =
       `*PartPixels Support & Inquiry*%0A%0A` +
       `👤 *Full Name:* ${encodeURIComponent(formData.fullName)}%0A` +
@@ -37,8 +46,12 @@ export default function ContactPage() {
     const whatsappUrl = `https://wa.me/${phoneNum}?text=${textMessage}`;
     setLastWhatsappUrl(whatsappUrl);
 
-    // Automatically open WhatsApp in new window/app
-    window.open(whatsappUrl, "_blank");
+    // Open WhatsApp in new tab / app
+    const win = window.open(whatsappUrl, "_blank");
+    if (!win || win.closed || typeof win.closed === "undefined") {
+      // Fallback if browser popup blocker triggers
+      window.location.href = whatsappUrl;
+    }
 
     setSubmitted(true);
   };

@@ -2,8 +2,18 @@ import React, { useEffect } from "react";
 import { aboutUsData, partpixelsInfo } from "../data/partpixelsData";
 import { ShieldCheck, Award, CheckCircle2, HeartHandshake } from "lucide-react";
 import MouseGlowCard from "../components/common/MouseGlowCard";
+import usePageSeo from "../hooks/usePageSeo";
 
 export default function AboutPage() {
+  usePageSeo({
+    title: "About Us - PartPixels Storage Technologies",
+    description:
+      "Learn about PartPixels core mission, 100% factory quality testing, transparent specifications, and 5-Year Limited Warranty.",
+    keywords: ["About PartPixels", "PartPixels SSD Warranty", "SSD Quality Testing", "Solid State Drive Brand"],
+    path: "/about-us",
+    image: "/assets/images/image (4).jpeg",
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

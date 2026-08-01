@@ -3,12 +3,42 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { productsData } from "../data/partpixelsData";
 import { ShieldCheck, Zap, HardDrive, Cpu, CheckCircle2, ArrowRight, ArrowLeft, Mail } from "lucide-react";
 import MouseGlowCard from "../components/common/MouseGlowCard";
+import usePageSeo from "../hooks/usePageSeo";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
   const product = productsData.find((p) => p.id === id);
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  usePageSeo({
+    title: product ? `${product.name} - ${product.interface} ${product.category} | PartPixels` : "Product Details | PartPixels",
+    description: product ? `${product.description} Read speeds ${product.readSpeed}, write speeds ${product.writeSpeed || 'high-speed'}. Backed by PartPixels 5-Year Warranty.` : "Explore PartPixels SSD specs.",
+    keywords: product ? [product.name, product.category, product.interface, "PartPixels SSD", "3D NAND Flash"] : [],
+    path: `/products/${id}`,
+    image: product?.image || "/assets/pixpro-product-1.png",
+    type: "product",
+    structuredData: product ? {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": product.name,
+      "image": product.image,
+      "description": product.description,
+      "brand": {
+        "@type": "Brand",
+        "name": "PartPixels"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "PartPixels"
+        }
+      }
+    } : null
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -23,28 +53,11 @@ export default function ProductDetailPage() {
   const otherProducts = productsData.filter((p) => p.id !== id);
 
   // Real official PartPixels product images for interactive gallery
-  const galleryImages = [
-    {
-      label: "Official Product View",
-      url: product.image || "/assets/pixpro-product-1.png",
-      caption: `${product.name} High-Performance NVMe SSD`,
-    },
-    {
-      label: "Angle & Circuit View",
-      url: "/assets/pixpro-product-2.png",
-      caption: `Dual-Layer PCB & Premium ${product.nandType}`,
-    },
-    {
-      label: "Side & Connector View",
-      url: "/assets/pixpro-product-3.png",
-      caption: `Precision M.2 2280 Connector & Thermal Label`,
-    },
-    {
-      label: "Back & Controller View",
-      url: "/assets/pixpro-product-1.png",
-      caption: `100% Quality & Factory Functional Tested`,
-    },
-  ];
+  const galleryImages = (product.galleryImages || [product.image]).map((imgUrl, idx) => ({
+    label: product.imageViews?.[idx] || `Product View ${idx + 1}`,
+    url: imgUrl,
+    caption: `${product.name} - ${product.imageViews?.[idx] || 'High Performance SSD'}`,
+  }));
 
   return (
     <div className="min-h-screen bg-backgroundPrimary text-textPrimary pt-28 pb-20">
@@ -176,13 +189,30 @@ export default function ProductDetailPage() {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 pt-2">
-              <Link
-                to="/contact"
-                className="flex-1 inline-flex items-center justify-center gap-2 bg-highlightText text-black font-bold py-3.5 px-6 rounded-xl hover:bg-buttonHover transition shadow-lg text-sm"
-              >
-                <Mail className="w-4 h-4" />
-                <span>Inquire / Request Quote</span>
-              </Link>
+              {(() => {
+                const phoneNum = "919819555225";
+                const textMsg =
+                  `*PartPixels Product Inquiry*%0A%0A` +
+                  `📦 *Product:* ${encodeURIComponent(product.name)} (${encodeURIComponent(product.subheading || product.category)})%0A` +
+                  `⚡ *Interface:* ${encodeURIComponent(product.interface)}%0A` +
+                  `🚀 *Speed:* Read ${encodeURIComponent(product.readSpeed)} | Write ${encodeURIComponent(product.writeSpeed || "High Speed")}%0A` +
+                  `🛡️ *NAND:* ${encodeURIComponent(product.nandType)}%0A%0A` +
+                  `💬 *Inquiry:* Hello PartPixels Team, I am interested in receiving a price quote, stock availability, and purchase options for *${encodeURIComponent(product.name)}*. Please assist me!`;
+
+                const whatsappProductUrl = `https://wa.me/${phoneNum}?text=${textMsg}`;
+
+                return (
+                  <a
+                    href={whatsappProductUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-2 bg-highlightText text-black font-bold py-3.5 px-6 rounded-xl hover:bg-buttonHover transition shadow-lg text-sm"
+                  >
+                    <Mail className="w-4 h-4" />
+                    <span>Inquire / Request Quote</span>
+                  </a>
+                );
+              })()}
               <Link
                 to="/warranty"
                 className="inline-flex items-center justify-center gap-2 bg-backgroundHover text-white font-semibold py-3.5 px-6 rounded-xl border border-borderColor hover:border-highlightText transition text-sm"

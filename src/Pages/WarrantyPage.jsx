@@ -1,10 +1,18 @@
 import React, { useEffect } from "react";
 import { warrantyData } from "../data/partpixelsData";
 import { ShieldCheck, CheckCircle, XCircle, AlertTriangle, HardDrive } from "lucide-react";
-
 import MouseGlowCard from "../components/common/MouseGlowCard";
+import usePageSeo from "../hooks/usePageSeo";
 
 export default function WarrantyPage() {
+  usePageSeo({
+    title: "5-Year Limited Warranty & Data Backup Policy - PartPixels",
+    description:
+      "Official PartPixels 5-Year Limited Warranty details, coverage terms, claim process, and customer data backup guidelines.",
+    keywords: ["PartPixels Warranty", "5 Year SSD Warranty", "PartPixels Support", "Data Backup Policy"],
+    path: "/warranty",
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
